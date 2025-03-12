@@ -1,0 +1,30 @@
+.logo {
+	width: 5vw;
+	height: auto;
+	border-radius: 10px;
+}
+
+.nav {
+	display: flex;
+	justify-content: space-around;
+	height: 12vh;
+	font-family: var(--text-font);
+	padding: 2em;
+	background-color: var(--light-color);
+	align-items: center;
+}
+
+.list {
+	display: flex;
+	gap: 6em;
+	list-style: none;
+	color: var(--primary-color);
+	text-decoration: none;
+}
+
+.link {
+	text-decoration: none;
+	color: var(--primary-color);
+	font-weight: bold;
+	font-size: 1.2em;
+}
