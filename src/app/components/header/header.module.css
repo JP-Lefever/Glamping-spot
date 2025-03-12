@@ -1,7 +1,6 @@
 .header {
-	background-image: url("../../assets/images/paysage.jpg");
+	background-image: url("/images/paysage.jpg");
 	background-size: 100vw;
-
 	height: 85vh;
 	background-repeat: no-repeat;
 }
