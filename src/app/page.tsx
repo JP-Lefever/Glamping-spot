@@ -1,6 +1,11 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import NavBar from "./components/navbar/navBar";
+import { useState } from "react";
 
 export default function Home() {
-	return;
+	const [user, setUser] = useState(false);
+	return (
+		<>
+			<NavBar setUser={setUser} user={user} />
+		</>
+	);
 }
