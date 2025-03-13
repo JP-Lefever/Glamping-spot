@@ -5,7 +5,7 @@ export type ModelProps = {
 
 export type PitchesProps = {
 	id: number;
-	label: string;
+	labelPitches: string;
 };
 
 export type InfraProps = {
