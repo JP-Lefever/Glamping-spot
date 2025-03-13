@@ -4,9 +4,14 @@
 	box-sizing: border-box;
 	/* outline: red 1px solid; */
 }
+
 @font-face {
 	font-family: "gotcha";
 	src: url("/fonts/gotcha-regular.ttf");
+}
+@font-face {
+	font-family: "popins";
+	src: url("/fonts/Poppins.ttf");
 }
 
 :root {
