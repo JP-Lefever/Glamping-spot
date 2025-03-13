@@ -11,15 +11,6 @@ export default function NavAdmin() {
 	const [openMenuUser, setOpenMenuUser] = useState(false);
 	const handleClickMenuUser = () => setOpenMenuUser(!openMenuUser);
 
-	// const logout = () => {
-	// 	fetch(`${import.meta.env.VITE_API_URL}/auth/logout`, {
-	// 		credentials: "include",
-	// 	})
-	// 		.then((res) => res.json())
-	// 		.then((data) => toast.success(data.message))
-	// 		.then(() => setTimeout(() => navigate("/"), 1500));
-	// };
-
 	return (
 		<>
 			<nav className={styles.nav}>
