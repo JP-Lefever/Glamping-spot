@@ -1,8 +1,6 @@
 "use client";
 import { useState } from "react";
 
-import { toast } from "react-toastify";
-import type { OutletContextType } from "../../assets/lib/definitions";
 import styles from "./navAdmin.module.css";
 import Link from "next/link";
 
@@ -12,15 +10,6 @@ export default function NavAdmin() {
 
 	const [openMenuUser, setOpenMenuUser] = useState(false);
 	const handleClickMenuUser = () => setOpenMenuUser(!openMenuUser);
-
-	// const logout = () => {
-	// 	fetch(`${import.meta.env.VITE_API_URL}/auth/logout`, {
-	// 		credentials: "include",
-	// 	})
-	// 		.then((res) => res.json())
-	// 		.then((data) => toast.success(data.message))
-	// 		.then(() => setTimeout(() => navigate("/"), 1500));
-	// };
 
 	return (
 		<>
@@ -42,10 +31,10 @@ export default function NavAdmin() {
 								Ajouter un camping
 							</Link>
 							<Link href="/admin/addMobilhome" className={styles.addCamp}>
-								Ajouter un type d'hébergement
+								Ajouter un type d&apos;hébergement
 							</Link>
 							<Link href="/admin/addPitches" className={styles.addCamp}>
-								Ajouter un type d'emplacement
+								Ajouter un type d&apos;emplacement
 							</Link>
 							<Link href="/admin/addInfra" className={styles.addCamp}>
 								Ajouter une infrastructure
