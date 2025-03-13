@@ -1,0 +1,50 @@
+/* * {
+  outline: 1px red solid;
+} */
+.fieldset {
+  display: grid;
+  grid-template-columns: 10vw 20vw 10vw 20vw;
+  width: fit-content;
+  margin: auto;
+  gap: 1.5em;
+  font-family: var(--text-font);
+  border: solid 2px var(--warm-color);
+  margin-bottom: 2em;
+  padding: 1em;
+  border-radius: 10px;
+}
+
+.legend {
+  font-family: var(--title-font);
+  margin-bottom: 1em;
+  margin-left: 4em;
+  border: solid 2px var(--warm-color);
+  padding: 1em;
+  border-radius: 10px;
+  font-size: 1.2em;
+}
+
+.label {
+  width: 10vw;
+  margin-left: 1em;
+}
+
+.input {
+  width: 15vw;
+}
+
+.add_form {
+  margin-top: 4em;
+}
+.button {
+  padding: 1em;
+  border-radius: 20px;
+  background-color: var(--secondary-color);
+  border: var(--cold-color);
+  font-family: var(--text-font);
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: auto;
+  margin-bottom: 2em;
+}
