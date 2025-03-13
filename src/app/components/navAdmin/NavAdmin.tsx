@@ -1,8 +1,6 @@
 "use client";
 import { useState } from "react";
 
-import { toast } from "react-toastify";
-import type { OutletContextType } from "../../assets/lib/definitions";
 import styles from "./navAdmin.module.css";
 import Link from "next/link";
 
@@ -42,10 +40,10 @@ export default function NavAdmin() {
 								Ajouter un camping
 							</Link>
 							<Link href="/admin/addMobilhome" className={styles.addCamp}>
-								Ajouter un type d'hébergement
+								Ajouter un type d&apos;hébergement
 							</Link>
 							<Link href="/admin/addPitches" className={styles.addCamp}>
-								Ajouter un type d'emplacement
+								Ajouter un type d&apos;emplacement
 							</Link>
 							<Link href="/admin/addInfra" className={styles.addCamp}>
 								Ajouter une infrastructure
