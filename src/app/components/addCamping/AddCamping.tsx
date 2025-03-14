@@ -13,6 +13,8 @@ import AddInfoInfra from "../addInfoInfra/AddInfoInfra";
 import AddInfoMh from "../addInfoMh/AddInfoMh";
 import AddInfoPitches from "../addInfoPitches/AddInfoPitches";
 import styles from "./addCamping.module.css";
+import { addCamping } from "@/app/modules/adminCamping/adminCampingAction";
+import { toast } from "react-toastify";
 
 export default function FormAddCamping({
 	pitches,
@@ -23,12 +25,21 @@ export default function FormAddCamping({
 	infra: InfraProps[] | undefined;
 	model: ModelProps[] | undefined;
 }) {
-	const { register } = useForm<CampingProps>();
+	const { register, handleSubmit, reset } = useForm<CampingProps>();
+
+	const onSubmit = async (data: CampingProps) => {
+		console.log(data);
+		const response = await addCamping(data);
+
+		if (response?.success) {
+			toast.success(response.message);
+		}
+	};
 
 	return (
 		<>
 			<section className={styles.add_form}>
-				<form>
+				<form onSubmit={handleSubmit(onSubmit)}>
 					<AddInfoCamping register={register} />
 					<AddInfoMh register={register} model={model} />
 					<AddInfoPitches register={register} pitches={pitches} />

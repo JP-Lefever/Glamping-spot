@@ -4,9 +4,6 @@ import type { UseFormRegister } from "react-hook-form";
 import type { CampingProps, InfraProps } from "../../assets/lib/definitions";
 import styles from "./addInfoInfra.module.css";
 
-export type RegisterProps = {
-	register: UseFormRegister<CampingProps>;
-};
 export default function AddInfoInfra({
 	register,
 	infra,

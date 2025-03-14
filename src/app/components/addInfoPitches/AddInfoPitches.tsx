@@ -2,10 +2,6 @@ import type { UseFormRegister } from "react-hook-form";
 import type { CampingProps, PitchesProps } from "../../assets/lib/definitions";
 import styles from "./addInfoPitches.module.css";
 
-export type RegisterProps = {
-	register: UseFormRegister<CampingProps>;
-};
-
 export default function AddInfoPitches({
 	register,
 	pitches,

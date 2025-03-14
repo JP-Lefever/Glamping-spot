@@ -16,22 +16,66 @@ export type InfraProps = {
 	label: string;
 };
 
-export type CampingProps = {
-	id: number;
+export type CampingInfo = {
+	id: string;
 	campingName: string;
-	label: string;
 	description: string;
-	photo: string;
 	photoCamp: string;
-	opening: Date;
-	closing: Date;
+	openingCamp: string;
+	closingCamp: string;
 	email: string;
-	tel: number;
+	tel: string;
 	stars: number;
 	city: string;
 	zipCode: number;
 	adress: string;
+};
+
+export type RentalProps = {
+	id: string;
+	modelMh: string;
+	sizeMh: number;
+	maxPers: number;
+	pricePerNight: number;
+	formattedOpeningMh: string;
+	formattedclosingMh: string;
+	photoMh: string;
+	linear: number;
+};
+
+export type PitchProps = {
+	id: string;
+	typePitche: string;
+	sizePitche: number;
+	electricity: boolean;
+	power: number;
+	pricePitche: number;
+	maxPersPitche: number;
+	formattedOpeningPitch: string;
+	formattedclosingPitch: string;
+	photoPitche: string;
+	totalPitches: number;
+};
+
+export type Infra = {
+	id: string;
 	infra: string;
+	photoInfra: string;
+};
+
+export type CampingProps = {
+	id: string;
+	campingName: string;
+	description: string;
+	photoCamp: string;
+	opening: Date;
+	closing: Date;
+	email: string;
+	tel: string;
+	stars: number;
+	city: string;
+	zipCode: number;
+	adress: string;
 	modelMh: string;
 	sizeMh: number;
 	maxPers: number;
@@ -42,7 +86,6 @@ export type CampingProps = {
 	linear: number;
 	typePitche: string;
 	sizePitche: number;
-	size: number;
 	electricity: boolean;
 	power: number;
 	pricePitche: number;
@@ -51,38 +94,39 @@ export type CampingProps = {
 	closingPitche: Date;
 	photoPitche: string;
 	totalPitches: number;
-	photoInfra: string;
-	infra_name: string;
-};
-export type CampingInfoProps = {
-	id: number;
-	campingName: string;
-	description: string;
-	photoCamp: string;
-	opening: Date;
-	closing: Date;
-	email: string;
-	tel: number;
-	stars: number;
-	city: string;
-	zipCode: number;
-	adress: string;
 	infra: string;
-	modelMh: string;
-	sizeMh: number;
-	max_pers: number;
-	pricePerNight: number;
-	price_night: string;
-	photoMh: string;
-	linear: number;
-	typePitche: string;
-	size: number;
-	pricePitche: number;
-	maxPersPitche: number;
-	photoPitche: string;
 	photoInfra: string;
-	infra_name: string;
 };
+
+// export type CampingInfoProps = {
+// 	id: number;
+// 	campingName: string;
+// 	description: string;
+// 	photoCamp: string;
+// 	opening: Date;
+// 	closing: Date;
+// 	email: string;
+// 	tel: number;
+// 	stars: number;
+// 	city: string;
+// 	zipCode: number;
+// 	adress: string;
+// 	infra: string;
+// 	modelMh: string;
+// 	sizeMh: number;
+// 	max_pers: number;
+// 	pricePerNight: number;
+// 	price_night: string;
+// 	photoMh: string;
+// 	linear: number;
+// 	typePitche: string;
+// 	size: number;
+// 	pricePitche: number;
+// 	maxPersPitche: number;
+// 	photoPitche: string;
+// 	photoInfra: string;
+// 	infra_name: string;
+// };
 
 export type UserProps = {
 	id: number;

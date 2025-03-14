@@ -1,9 +1,5 @@
 import postgres from "postgres";
-import {
-	ModelProps,
-	type InfraProps,
-	type PitchesProps,
-} from "../lib/definitions";
+import type { ModelProps, InfraProps, PitchesProps } from "../lib/definitions";
 
 const sql = postgres(process.env.POSTGRES_URL as string, { ssl: "require" });
 
@@ -13,7 +9,6 @@ export async function fetchPitch() {
     SELECT *
     FROM type_pitches
     `;
-		console.info(pitches);
 		return pitches as PitchesProps[];
 	} catch (error) {
 		console.error("dabase error:", error);

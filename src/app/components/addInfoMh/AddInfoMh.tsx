@@ -5,10 +5,6 @@ import styles from "./addInfoMh.module.css";
 
 import type { UseFormRegister } from "react-hook-form";
 
-export type RegisterProps = {
-	register: UseFormRegister<CampingProps>;
-};
-
 export default function AddInfoCamping({
 	register,
 	model,
