@@ -60,6 +60,7 @@
 	text-align: center;
 	padding-top: 0.4em;
 	padding-bottom: 0.4em;
+	text-decoration: none;
 }
 .addCamp:last-child {
 	border-bottom: none;
