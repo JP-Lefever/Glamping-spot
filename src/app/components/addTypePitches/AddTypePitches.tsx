@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import type { PitchesProps } from "../../assets/lib/definitions";
 import styles from "./addTypePitches.module.css";
 import { addPitchesType } from "@/app/modules/adminCamping/adminCampingAction";
-import { Bounce, toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 export default function AddTypePitches() {
 	const {
@@ -17,7 +17,7 @@ export default function AddTypePitches() {
 	const onSubmit = async (data: PitchesProps) => {
 		const response = await addPitchesType(data);
 
-		if (response.success) {
+		if (response?.success) {
 			toast.success(response.message);
 		}
 		reset();
@@ -25,35 +25,32 @@ export default function AddTypePitches() {
 
 	return (
 		<>
-			<ToastContainer
-				position="top-center"
-				autoClose={6000}
-				hideProgressBar={true}
-				newestOnTop={false}
-				closeOnClick={false}
-				rtl={false}
-				pauseOnFocusLoss
-				draggable
-				pauseOnHover
-				theme="light"
-				transition={Bounce}
-			/>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<fieldset className={styles.fieldset}>
 					<legend className={styles.legend}> Ajouter un Emplacement</legend>
-					<label className={styles.label} htmlFor="label">
+					<label className={styles.label} htmlFor="labelPitches">
 						Nom de l'emplacement
 					</label>
 					<input
 						className={styles.inpit}
 						type="text"
-						{...register("labelPitches", { required: "champs requis" })}
+						{...register("labelPitches", {
+							required: "*Champs requis",
+							minLength: {
+								value: 2,
+								message: "*Le champs doit contenir au moins 2 caractères",
+							},
+							pattern: {
+								value: /^[a-zA-Z0-9]/,
+								message: "Seul les lettres et les chiffres sont autorisés",
+							},
+						})}
 					/>
-					<p>{errors.labelPitches?.message}</p>
 					<button className={styles.button} type="submit">
 						Ajouter un emplacement
 					</button>
 				</fieldset>
+				<p className={styles.error}>{errors.labelPitches?.message}</p>
 			</form>
 		</>
 	);

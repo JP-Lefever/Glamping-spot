@@ -1,6 +1,6 @@
 export type ModelProps = {
 	id: number;
-	label: string;
+	labelLocation: string;
 };
 
 export type PitchesProps = {

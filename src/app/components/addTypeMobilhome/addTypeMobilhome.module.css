@@ -28,7 +28,7 @@
 }
 
 .input {
-	width: 15vw;
+	width: 20vw;
 }
 .button {
 	padding: 0.1em;
@@ -38,4 +38,10 @@
 	font-family: var(--text-font);
 	color: white;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.error {
+	width: fit-content;
+	font-family: var(--title-font);
+	color: red;
 }

@@ -5,7 +5,7 @@ const sql = postgres(process.env.POSTGRES_URL as string, { ssl: "require" });
 class AdminCampingRepository {
 	async createPitches(labelPitches: string) {
 		try {
-			const result = await sql`
+			await sql`
         INSERT INTO type_pitches(label)
         VALUES(${labelPitches})
 		
@@ -16,6 +16,16 @@ class AdminCampingRepository {
 			return { message: "Une erreur est survenu" };
 		}
 	}
+	async createLocation(label: string) {
+		try {
+			await sql`
+	INSERT INTO model (label)
+	VALUES (${label})
+	`;
+			return { message: `Le modèle ${label} a bien été ajouté` };
+		} catch (errors) {
+			return { message: "Un problème est survenu" };
+		}
+	}
 }
-
 export default new AdminCampingRepository();
