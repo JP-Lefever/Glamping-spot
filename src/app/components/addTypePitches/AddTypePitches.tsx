@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import type { PitchesProps } from "../../assets/lib/definitions";
 import styles from "./addTypePitches.module.css";
 import { addPitchesType } from "@/app/modules/adminCamping/adminCampingAction";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 export default function AddTypePitches() {
 	const {
@@ -13,13 +14,30 @@ export default function AddTypePitches() {
 		reset,
 	} = useForm<PitchesProps>();
 
-	const onSubmit = (data: PitchesProps) => {
-		addPitchesType(data);
+	const onSubmit = async (data: PitchesProps) => {
+		const response = await addPitchesType(data);
+
+		if (response.success) {
+			toast.success(response.message);
+		}
 		reset();
 	};
 
 	return (
 		<>
+			<ToastContainer
+				position="top-center"
+				autoClose={6000}
+				hideProgressBar={true}
+				newestOnTop={false}
+				closeOnClick={false}
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme="light"
+				transition={Bounce}
+			/>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<fieldset className={styles.fieldset}>
 					<legend className={styles.legend}> Ajouter un Emplacement</legend>

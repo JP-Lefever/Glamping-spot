@@ -4,11 +4,17 @@ const sql = postgres(process.env.POSTGRES_URL as string, { ssl: "require" });
 
 class AdminCampingRepository {
 	async createPitches(labelPitches: string) {
-		const [result] = await sql`
+		try {
+			const result = await sql`
         INSERT INTO type_pitches(label)
         VALUES(${labelPitches})
+		
         `;
-		return result;
+
+			return { message: `l'emplacement ${labelPitches} a bien été ajouté` };
+		} catch (errors) {
+			return { message: "Une erreur est survenu" };
+		}
 	}
 }
 
