@@ -16,7 +16,6 @@ export default function AddTypeMobilhome() {
 	} = useForm<ModelProps>();
 
 	const onSubmit = async (data: ModelProps) => {
-		console.log(data);
 		const response = await addTypeLocation(data);
 		if (response?.success) {
 			toast.success(response.message);

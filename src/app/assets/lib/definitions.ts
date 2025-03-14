@@ -10,7 +10,7 @@ export type PitchesProps = {
 
 export type InfraProps = {
 	id: number;
-	label: string;
+	labelInfra: string;
 };
 
 export type CampingProps = {

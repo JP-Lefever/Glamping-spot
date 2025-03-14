@@ -27,5 +27,17 @@ class AdminCampingRepository {
 			return { message: "Un problème est survenu" };
 		}
 	}
+
+	async createInfra(labelInfra: string) {
+		try {
+			await sql`
+			INSERT INTO kind_infra (label)
+			VALUES (${labelInfra})
+			`;
+			return { message: `l'infrastructure ${labelInfra} a bien été ajouté` };
+		} catch (errors) {
+			return { message: "Un problème est survenu" };
+		}
+	}
 }
 export default new AdminCampingRepository();
