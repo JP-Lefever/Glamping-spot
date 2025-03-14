@@ -57,15 +57,25 @@ CREATE TABLE IF NOT EXISTS book (
     `;
 }
 
+async function seedKindInfra() {
+	await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+	await sql`
+  CREATE TABLE IF NOT EXISTS kind_infra(
+    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY NOT NULL,
+  label VARCHAR(255) NOT NULL
+  )`;
+}
+
 async function seedInfrastructure() {
 	await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 	await sql`
 CREATE TABLE IF NOT EXISTS infrastructure(
      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY NOT NULL,
-     label VARCHAR(255) NOT NULL,
+     kind_infra_id UUID NOT NULL,
      camping_id UUID NOT NULL,
      photo VARCHAR(255),
      CONSTRAINT fk_infra_camping FOREIGN KEY(camping_id) REFERENCES camping(id)
+     CONSTRAINT fk_kind_infra FOREIGN KEY(kind_infra_id) REFERENCES kind_infra(id)
 );
     `;
 }
@@ -138,6 +148,7 @@ export async function GET() {
 			seedUser(),
 			seedCamping(),
 			seedBook(),
+			seedKindInfra(),
 			seedInfrastructure(),
 			seedModel(),
 			seedRental(),
