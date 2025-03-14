@@ -7,7 +7,13 @@ import styles from "./addInfoInfra.module.css";
 export type RegisterProps = {
 	register: UseFormRegister<CampingProps>;
 };
-export default function AddInfoIngra({ register }: RegisterProps) {
+export default function AddInfoInfra({
+	register,
+	infra,
+}: {
+	register: UseFormRegister<CampingProps>;
+	infra: InfraProps[] | undefined;
+}) {
 	return (
 		<>
 			<fieldset className={styles.fieldset}>
@@ -20,13 +26,13 @@ export default function AddInfoIngra({ register }: RegisterProps) {
 					{...register("infra", { required: "Champ requis" })}
 				>
 					<option value={0}>Séléctionnez une infrastructure</option>
-					{/* {infra
+					{infra
 						? infra.map((i) => (
 								<option key={i.id} value={i.id}>
 									{i.label}
 								</option>
 							))
-						: ""} */}
+						: ""}
 				</select>
 				<label className={styles.label} htmlFor="photoInfra">
 					Photo

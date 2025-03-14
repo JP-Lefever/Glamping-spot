@@ -1,6 +1,6 @@
 "use client";
 
-import type { CampingProps } from "../../assets/lib/definitions";
+import type { CampingProps, ModelProps } from "../../assets/lib/definitions";
 import styles from "./addInfoMh.module.css";
 
 import type { UseFormRegister } from "react-hook-form";
@@ -9,7 +9,13 @@ export type RegisterProps = {
 	register: UseFormRegister<CampingProps>;
 };
 
-export default function AddInfoCamping({ register }: RegisterProps) {
+export default function AddInfoCamping({
+	register,
+	model,
+}: {
+	register: UseFormRegister<CampingProps>;
+	model: ModelProps[] | undefined;
+}) {
 	return (
 		<>
 			<fieldset className={styles.fieldset}>
@@ -22,13 +28,13 @@ export default function AddInfoCamping({ register }: RegisterProps) {
 					{...register("modelMh", { required: "Champ requis" })}
 				>
 					<option value={0}>Séléctionnez une type d'hébergement</option>
-					{/* {mobilHome
-						? mobilHome.map((m) => (
+					{model
+						? model.map((m) => (
 								<option key={m.id} value={m.id}>
 									{m.label}
 								</option>
 							))
-						: ""} */}
+						: ""}
 				</select>
 				<label className={styles.label} htmlFor="sizeMh">
 					Taille(en m2)

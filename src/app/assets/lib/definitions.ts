@@ -1,16 +1,19 @@
 export type ModelProps = {
 	id: number;
 	labelLocation: string;
+	label: string;
 };
 
 export type PitchesProps = {
 	id: number;
 	labelPitches: string;
+	label: string;
 };
 
 export type InfraProps = {
 	id: number;
 	labelInfra: string;
+	label: string;
 };
 
 export type CampingProps = {
