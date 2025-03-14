@@ -1,12 +1,14 @@
 import type { UseFormRegister } from "react-hook-form";
-import type { CampingProps } from "../../assets/lib/definitions";
+import type { CampingProps, PitchesProps } from "../../assets/lib/definitions";
 import styles from "./addInfoPitches.module.css";
 
-export type RegisterProps = {
+export default function AddInfoPitches({
+	register,
+	pitches,
+}: {
 	register: UseFormRegister<CampingProps>;
-};
-
-export default function AddInfoPitches({ register }: RegisterProps) {
+	pitches: PitchesProps[] | undefined;
+}) {
 	return (
 		<>
 			<fieldset className={styles.fieldset}>
@@ -19,13 +21,13 @@ export default function AddInfoPitches({ register }: RegisterProps) {
 					{...register("typePitche", { required: "Champ requis" })}
 				>
 					<option value={0}>Séléctionnez une type d'emplacement</option>
-					{/* {pitches
+					{pitches
 						? pitches.map((p) => (
 								<option key={p.id} value={p.id}>
 									{p.label}
 								</option>
 							))
-						: ""} */}
+						: ""}
 				</select>
 				<label className={styles.label} htmlFor="sizePitche">
 					Taille (en m2)
