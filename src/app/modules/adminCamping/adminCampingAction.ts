@@ -6,6 +6,7 @@ import type {
 	InfraProps,
 	CampingProps,
 	RentalProps,
+	PhotoProps,
 } from "../../assets/lib/definitions";
 import { z } from "zod";
 
@@ -105,22 +106,25 @@ export async function addInfrastructure(data: InfraProps) {
 	}
 }
 
-export async function addCamping(formData: FormData) {
+export async function addCamping(formData: FormData, dataPhoto: PhotoProps) {
 	const data = formData.get("info") as string;
-	const photoCamp = formData.get("photoCamp");
-	const photoMh = formData.get("photoMh");
-	const photoPitche = formData.get("photoPitch");
-	const photoInfra = formData.get("photoInfra");
+	// const photoCamp = formData.get("photoCamp");
+	// const photoMh = formData.get("photoMh");
+	// const photoPitche = formData.get("photoPitch");
+	// const photoInfra = formData.get("photoInfra");
 	const infoCamping = JSON.parse(data);
+
+	const { photoCampName, photoMhName, photoPitchName, photoInfraName } =
+		dataPhoto;
 
 	// const photo = photoCamp?.fileName;
 	// const photoLocation = photoMh?.[0]?.fileName;
 	// const PhotoPitches = photoPitch?.[0]?.fileName;
 	// const photoInfrastructure = photoInfra?.[0]?.fileName;
-	// console.info(photoCamp);
-	// console.info(photoMh);
-	// console.info(photoPitche);
-	// console.info(photoInfra);
+	// console.info(photoCamp.name);
+	// console.info(photoMh.name);
+	// console.info(photoPitche.name);
+	// console.info(photoInfra.name);
 
 	const validateData = validationSchemaCamping.safeParse(infoCamping);
 
@@ -167,6 +171,7 @@ export async function addCamping(formData: FormData) {
 			zipCode,
 			adress,
 			description,
+			photoCampName,
 		};
 		const formattedOpeningMh = formatedDate(openingMh);
 		const formattedclosingMh = formatedDate(closingMh);
@@ -178,6 +183,7 @@ export async function addCamping(formData: FormData) {
 			formattedOpeningMh,
 			formattedclosingMh,
 			linear,
+			photoMhName,
 		};
 		const formattedOpeningPitch = formatedDate(openingPitche);
 		const formattedclosingPitch = formatedDate(closingPitche);
@@ -191,9 +197,14 @@ export async function addCamping(formData: FormData) {
 			formattedOpeningPitch,
 			formattedclosingPitch,
 			totalPitches,
+			photoPitchName,
 		};
+		console.info(campingInfo);
+		console.info(rentalInfo);
+		console.info(pitchInfo);
 
 		const campingId = await AdminCampingRepository.createCamping(campingInfo);
+		console.info(campingId);
 		const rentalId = await AdminCampingRepository.createRental(
 			rentalInfo,
 			campingId,
@@ -205,6 +216,7 @@ export async function addCamping(formData: FormData) {
 		const infraId = await AdminCampingRepository.createInfrastructure(
 			infra,
 			campingId,
+			photoInfraName,
 		);
 
 		return {

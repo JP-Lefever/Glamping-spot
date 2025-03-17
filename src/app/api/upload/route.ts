@@ -26,15 +26,25 @@ export const POST = async (req: NextRequest) => {
 		return `${timestamp}-${file.name.replace(/\s/g, "_")}`;
 	};
 
-	const pathCamp = path.join(uploadDir, generateFileName(photoCamp));
-	const pathMh = path.join(uploadDir, generateFileName(photoMh));
-	const pathPitch = path.join(uploadDir, generateFileName(photoPitche));
-	const pathInfra = path.join(uploadDir, generateFileName(photoInfra));
+	const photoCampName = generateFileName(photoCamp);
+	const photoMhName = generateFileName(photoMh);
+	const photoPitchName = generateFileName(photoPitche);
+	const photoInfraName = generateFileName(photoInfra);
+
+	const pathCamp = path.join(uploadDir, photoCampName);
+	const pathMh = path.join(uploadDir, photoMhName);
+	const pathPitch = path.join(uploadDir, photoPitchName);
+	const pathInfra = path.join(uploadDir, photoInfraName);
 
 	writeFile(pathCamp, bufferDataCamp);
 	writeFile(pathMh, bufferDataMh);
 	writeFile(pathPitch, bufferDataPitch);
 	writeFile(pathInfra, bufferDataInfra);
 
-	return NextResponse.json({ msg: " image upload ok" });
+	return NextResponse.json({
+		photoCampName,
+		photoMhName,
+		photoPitchName,
+		photoInfraName,
+	});
 };

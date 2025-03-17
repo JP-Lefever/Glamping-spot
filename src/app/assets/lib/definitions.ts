@@ -20,7 +20,7 @@ export type CampingInfo = {
 	id: string;
 	campingName: string;
 	description: string;
-	photoCamp: string;
+	photoCampName: string;
 	openingCamp: string;
 	closingCamp: string;
 	email: string;
@@ -39,7 +39,7 @@ export type RentalProps = {
 	pricePerNight: number;
 	formattedOpeningMh: string;
 	formattedclosingMh: string;
-	photoMh: string;
+	photoMhName: string;
 	linear: number;
 };
 
@@ -53,7 +53,7 @@ export type PitchProps = {
 	maxPersPitche: number;
 	formattedOpeningPitch: string;
 	formattedclosingPitch: string;
-	photoPitche: string;
+	photoPitchName: string;
 	totalPitches: number;
 };
 
@@ -61,6 +61,13 @@ export type Infra = {
 	id: string;
 	infra: string;
 	photoInfra: string;
+};
+
+export type PhotoProps = {
+	photoCampName: string;
+	photoMhName: string;
+	photoPitchName: string;
+	photoInfraName: string;
 };
 
 export type CampingProps = {

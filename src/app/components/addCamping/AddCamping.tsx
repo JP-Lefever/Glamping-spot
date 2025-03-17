@@ -36,17 +36,19 @@ export default function FormAddCamping({
 		formData.append("photoInfra", photoInfra[0]);
 		formData.append("info", JSON.stringify(rest));
 
-		const upload = await fetch("/api/upload", {
+		const responseUpload = await fetch("/api/upload", {
 			method: "POST",
 			body: formData,
 		});
-		if (upload.ok) {
-			console.log("Upload Ok");
+		const dataPhoto = await responseUpload.json();
+		if (responseUpload.ok) {
+			console.log("photo uploaded");
 		} else {
 			console.log("Un problem est survenu");
 		}
 
-		const response = await addCamping(formData);
+		const response = await addCamping(formData, dataPhoto);
+		console.info(response);
 
 		if (response?.success) {
 			toast.success(response.message);

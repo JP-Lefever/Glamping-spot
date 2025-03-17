@@ -56,13 +56,14 @@ class AdminCampingRepository {
 		zipCode,
 		adress,
 		description,
-	}: Omit<CampingInfo, "id" | "photoCamp">) {
+		photoCampName,
+	}: Omit<CampingInfo, "id">) {
 		try {
 			const openingDate = new Date(openingCamp);
 			const closingDate = new Date(closingCamp);
 			const result = await sql`
-			INSERT INTO camping(label, opening, closing, email, tel, stars, city, zipcode, adress, description)
-			VALUES(${campingName},${openingDate},${closingDate},${email},${tel},${stars},${city},${zipCode},${adress},${description})
+			INSERT INTO camping(label, opening, closing, email, tel, stars, city, zipcode, adress, description, photo)
+			VALUES(${campingName},${openingDate},${closingDate},${email},${tel},${stars},${city},${zipCode},${adress},${description},${photoCampName})
 			RETURNING id
 			`;
 
@@ -81,15 +82,16 @@ class AdminCampingRepository {
 			formattedOpeningMh,
 			formattedclosingMh,
 			linear,
-		}: Omit<RentalProps, "id" | "photoMh">,
+			photoMhName,
+		}: Omit<RentalProps, "id">,
 		camping_id: number,
 	) {
 		try {
 			const openingDate = new Date(formattedOpeningMh);
 			const closingDate = new Date(formattedclosingMh);
 			const result = await sql`
-		INSERT INTO rental(model_id, size, max_pers,pricePerNight,opening,closing,total,camping_id)
-		VALUES (${modelMh}, ${sizeMh}, ${maxPers}, ${pricePerNight},${openingDate},${closingDate},${linear},${camping_id})
+		INSERT INTO rental(model_id, size, max_pers,pricePerNight,opening,closing,total,camping_id, photo)
+		VALUES (${modelMh}, ${sizeMh}, ${maxPers}, ${pricePerNight},${openingDate},${closingDate},${linear},${camping_id},${photoMhName})
 		RETURNING id
 		`;
 
@@ -109,7 +111,7 @@ class AdminCampingRepository {
 			maxPersPitche,
 			formattedOpeningPitch,
 			formattedclosingPitch,
-
+			photoPitchName,
 			totalPitches,
 		}: Omit<PitchProps, "id" | "photoPitche">,
 		camping_id: number,
@@ -118,8 +120,8 @@ class AdminCampingRepository {
 			const openingDate = new Date(formattedOpeningPitch);
 			const closingDate = new Date(formattedclosingPitch);
 			const result = await sql`
-				INSERT INTO pitches (type_pitches_id, size, is_electrified, power, price_night, max_pers, opening, closing, total, camping_id)
-				VALUES (${typePitche},${sizePitche},${electricity},${power},${pricePitche},${maxPersPitche},${openingDate},${closingDate},${totalPitches},${camping_id})
+				INSERT INTO pitches (type_pitches_id, size, is_electrified, power, price_night, max_pers, opening, closing, total, camping_id, photo)
+				VALUES (${typePitche},${sizePitche},${electricity},${power},${pricePitche},${maxPersPitche},${openingDate},${closingDate},${totalPitches},${camping_id},${photoPitchName})
 				RETURNING id
 				`;
 
@@ -128,11 +130,15 @@ class AdminCampingRepository {
 			return { message: err };
 		}
 	}
-	async createInfrastructure(infra: string, camping_id: number) {
+	async createInfrastructure(
+		infra: string,
+		camping_id: number,
+		photoInfraName: string,
+	) {
 		try {
 			const result = await sql`
-			INSERT INTO infrastructure(label, camping_id)
-			VALUES (${infra}, ${camping_id})
+			INSERT INTO infrastructure(label, camping_id,photo)
+			VALUES (${infra}, ${camping_id}, ${photoInfraName})
 			RETURNING id
 			`;
 
