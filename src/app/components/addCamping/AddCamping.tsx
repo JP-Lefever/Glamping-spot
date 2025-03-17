@@ -28,8 +28,25 @@ export default function FormAddCamping({
 	const { register, handleSubmit, reset } = useForm<CampingProps>();
 
 	const onSubmit = async (data: CampingProps) => {
-		console.log(data);
-		const response = await addCamping(data);
+		const { photoCamp, photoMh, photoPitche, photoInfra, ...rest } = data;
+		const formData = new FormData();
+		formData.append("photoCamp", photoCamp[0]);
+		formData.append("photoMh", photoMh[0]);
+		formData.append("photoPitche", photoPitche[0]);
+		formData.append("photoInfra", photoInfra[0]);
+		formData.append("info", JSON.stringify(rest));
+
+		const upload = await fetch("/api/upload", {
+			method: "POST",
+			body: formData,
+		});
+		if (upload.ok) {
+			console.log("Upload Ok");
+		} else {
+			console.log("Un problem est survenu");
+		}
+
+		const response = await addCamping(formData);
 
 		if (response?.success) {
 			toast.success(response.message);

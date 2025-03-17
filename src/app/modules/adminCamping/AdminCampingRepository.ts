@@ -57,18 +57,6 @@ class AdminCampingRepository {
 		adress,
 		description,
 	}: Omit<CampingInfo, "id" | "photoCamp">) {
-		console.log(
-			campingName,
-			openingCamp,
-			closingCamp,
-			email,
-			tel,
-			stars,
-			city,
-			zipCode,
-			adress,
-			description,
-		);
 		try {
 			const openingDate = new Date(openingCamp);
 			const closingDate = new Date(closingCamp);
@@ -104,7 +92,7 @@ class AdminCampingRepository {
 		VALUES (${modelMh}, ${sizeMh}, ${maxPers}, ${pricePerNight},${openingDate},${closingDate},${linear},${camping_id})
 		RETURNING id
 		`;
-			console.info(result);
+
 			return result[0].id;
 		} catch (err) {
 			return { message: err };

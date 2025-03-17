@@ -105,8 +105,24 @@ export async function addInfrastructure(data: InfraProps) {
 	}
 }
 
-export async function addCamping(data: CampingProps) {
-	const validateData = validationSchemaCamping.safeParse(data);
+export async function addCamping(formData: FormData) {
+	const data = formData.get("info") as string;
+	const photoCamp = formData.get("photoCamp");
+	const photoMh = formData.get("photoMh");
+	const photoPitche = formData.get("photoPitch");
+	const photoInfra = formData.get("photoInfra");
+	const infoCamping = JSON.parse(data);
+
+	// const photo = photoCamp?.fileName;
+	// const photoLocation = photoMh?.[0]?.fileName;
+	// const PhotoPitches = photoPitch?.[0]?.fileName;
+	// const photoInfrastructure = photoInfra?.[0]?.fileName;
+	// console.info(photoCamp);
+	// console.info(photoMh);
+	// console.info(photoPitche);
+	// console.info(photoInfra);
+
+	const validateData = validationSchemaCamping.safeParse(infoCamping);
 
 	if (validateData.success) {
 		const {
@@ -139,7 +155,7 @@ export async function addCamping(data: CampingProps) {
 			infra,
 		} = validateData.data;
 		const openingCamp = formatedDate(opening);
-		const closingCamp = formatedDate(closingMh);
+		const closingCamp = formatedDate(closing);
 		const campingInfo = {
 			campingName,
 			openingCamp,
@@ -190,10 +206,6 @@ export async function addCamping(data: CampingProps) {
 			infra,
 			campingId,
 		);
-		console.info(campingId);
-		console.info(rentalId);
-		console.info(pitchId);
-		console.info(infraId);
 
 		return {
 			success: true,
