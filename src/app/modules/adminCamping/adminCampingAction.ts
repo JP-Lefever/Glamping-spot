@@ -117,15 +117,6 @@ export async function addCamping(formData: FormData, dataPhoto: PhotoProps) {
 	const { photoCampName, photoMhName, photoPitchName, photoInfraName } =
 		dataPhoto;
 
-	// const photo = photoCamp?.fileName;
-	// const photoLocation = photoMh?.[0]?.fileName;
-	// const PhotoPitches = photoPitch?.[0]?.fileName;
-	// const photoInfrastructure = photoInfra?.[0]?.fileName;
-	// console.info(photoCamp.name);
-	// console.info(photoMh.name);
-	// console.info(photoPitche.name);
-	// console.info(photoInfra.name);
-
 	const validateData = validationSchemaCamping.safeParse(infoCamping);
 
 	if (validateData.success) {
@@ -199,9 +190,6 @@ export async function addCamping(formData: FormData, dataPhoto: PhotoProps) {
 			totalPitches,
 			photoPitchName,
 		};
-		console.info(campingInfo);
-		console.info(rentalInfo);
-		console.info(pitchInfo);
 
 		const campingId = await AdminCampingRepository.createCamping(campingInfo);
 		console.info(campingId);

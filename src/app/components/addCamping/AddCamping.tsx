@@ -25,7 +25,12 @@ export default function FormAddCamping({
 	infra: InfraProps[] | undefined;
 	model: ModelProps[] | undefined;
 }) {
-	const { register, handleSubmit, reset } = useForm<CampingProps>();
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState: { errors },
+	} = useForm<CampingProps>();
 
 	const onSubmit = async (data: CampingProps) => {
 		const { photoCamp, photoMh, photoPitche, photoInfra, ...rest } = data;
@@ -59,10 +64,14 @@ export default function FormAddCamping({
 		<>
 			<section className={styles.add_form}>
 				<form onSubmit={handleSubmit(onSubmit)}>
-					<AddInfoCamping register={register} />
-					<AddInfoMh register={register} model={model} />
-					<AddInfoPitches register={register} pitches={pitches} />
-					<AddInfoInfra register={register} infra={infra} />
+					<AddInfoCamping register={register} errors={errors} />
+					<AddInfoMh register={register} model={model} errors={errors} />
+					<AddInfoPitches
+						register={register}
+						pitches={pitches}
+						errors={errors}
+					/>
+					<AddInfoInfra register={register} infra={infra} errors={errors} />
 					<button className={styles.button} type="submit">
 						Je valide les Informations
 					</button>
