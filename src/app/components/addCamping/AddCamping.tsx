@@ -25,11 +25,35 @@ export default function FormAddCamping({
 	infra: InfraProps[] | undefined;
 	model: ModelProps[] | undefined;
 }) {
-	const { register, handleSubmit, reset } = useForm<CampingProps>();
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState: { errors },
+	} = useForm<CampingProps>();
 
 	const onSubmit = async (data: CampingProps) => {
-		console.log(data);
-		const response = await addCamping(data);
+		const { photoCamp, photoMh, photoPitche, photoInfra, ...rest } = data;
+		const formData = new FormData();
+		formData.append("photoCamp", photoCamp[0]);
+		formData.append("photoMh", photoMh[0]);
+		formData.append("photoPitche", photoPitche[0]);
+		formData.append("photoInfra", photoInfra[0]);
+		formData.append("info", JSON.stringify(rest));
+
+		const responseUpload = await fetch("/api/upload", {
+			method: "POST",
+			body: formData,
+		});
+		const dataPhoto = await responseUpload.json();
+		if (responseUpload.ok) {
+			console.log("photo uploaded");
+		} else {
+			console.log("Un problem est survenu");
+		}
+
+		const response = await addCamping(formData, dataPhoto);
+		console.info(response);
 
 		if (response?.success) {
 			toast.success(response.message);
@@ -40,10 +64,14 @@ export default function FormAddCamping({
 		<>
 			<section className={styles.add_form}>
 				<form onSubmit={handleSubmit(onSubmit)}>
-					<AddInfoCamping register={register} />
-					<AddInfoMh register={register} model={model} />
-					<AddInfoPitches register={register} pitches={pitches} />
-					<AddInfoInfra register={register} infra={infra} />
+					<AddInfoCamping register={register} errors={errors} />
+					<AddInfoMh register={register} model={model} errors={errors} />
+					<AddInfoPitches
+						register={register}
+						pitches={pitches}
+						errors={errors}
+					/>
+					<AddInfoInfra register={register} infra={infra} errors={errors} />
 					<button className={styles.button} type="submit">
 						Je valide les Informations
 					</button>

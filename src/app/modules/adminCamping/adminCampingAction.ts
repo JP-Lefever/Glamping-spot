@@ -6,6 +6,7 @@ import type {
 	InfraProps,
 	CampingProps,
 	RentalProps,
+	PhotoProps,
 } from "../../assets/lib/definitions";
 import { z } from "zod";
 
@@ -105,8 +106,18 @@ export async function addInfrastructure(data: InfraProps) {
 	}
 }
 
-export async function addCamping(data: CampingProps) {
-	const validateData = validationSchemaCamping.safeParse(data);
+export async function addCamping(formData: FormData, dataPhoto: PhotoProps) {
+	const data = formData.get("info") as string;
+	// const photoCamp = formData.get("photoCamp");
+	// const photoMh = formData.get("photoMh");
+	// const photoPitche = formData.get("photoPitch");
+	// const photoInfra = formData.get("photoInfra");
+	const infoCamping = JSON.parse(data);
+
+	const { photoCampName, photoMhName, photoPitchName, photoInfraName } =
+		dataPhoto;
+
+	const validateData = validationSchemaCamping.safeParse(infoCamping);
 
 	if (validateData.success) {
 		const {
@@ -139,7 +150,7 @@ export async function addCamping(data: CampingProps) {
 			infra,
 		} = validateData.data;
 		const openingCamp = formatedDate(opening);
-		const closingCamp = formatedDate(closingMh);
+		const closingCamp = formatedDate(closing);
 		const campingInfo = {
 			campingName,
 			openingCamp,
@@ -151,6 +162,7 @@ export async function addCamping(data: CampingProps) {
 			zipCode,
 			adress,
 			description,
+			photoCampName,
 		};
 		const formattedOpeningMh = formatedDate(openingMh);
 		const formattedclosingMh = formatedDate(closingMh);
@@ -162,6 +174,7 @@ export async function addCamping(data: CampingProps) {
 			formattedOpeningMh,
 			formattedclosingMh,
 			linear,
+			photoMhName,
 		};
 		const formattedOpeningPitch = formatedDate(openingPitche);
 		const formattedclosingPitch = formatedDate(closingPitche);
@@ -175,9 +188,11 @@ export async function addCamping(data: CampingProps) {
 			formattedOpeningPitch,
 			formattedclosingPitch,
 			totalPitches,
+			photoPitchName,
 		};
 
 		const campingId = await AdminCampingRepository.createCamping(campingInfo);
+		console.info(campingId);
 		const rentalId = await AdminCampingRepository.createRental(
 			rentalInfo,
 			campingId,
@@ -189,11 +204,8 @@ export async function addCamping(data: CampingProps) {
 		const infraId = await AdminCampingRepository.createInfrastructure(
 			infra,
 			campingId,
+			photoInfraName,
 		);
-		console.info(campingId);
-		console.info(rentalId);
-		console.info(pitchId);
-		console.info(infraId);
 
 		return {
 			success: true,
