@@ -77,3 +77,20 @@ export async function fetchCamping4() {
 		console.error(e);
 	}
 }
+
+export async function fetchDetails(id: string) {
+	try {
+		const camping5 = await sql<CampingDetailsProps[]>`
+		SELECT c.*, p.opening AS openingPitch, p.closing AS closingPitch, p.photo AS photoPitch, p.size AS sizePitch, p.is_electrified, p.power, p.price_night, p.max_pers AS maxPersPitch, r.size AS sizeMh, r.max_pers AS maxPersMh, r.pricepernight, r.opening AS openingMh, r.closing AS closingMh, r.photo AS photoMh
+		FROM camping AS c
+		JOIN rental AS r ON r.camping_id = c.id
+		JOIN infrastructure AS i ON i.camping_id = c.id
+		JOIN pitches AS p ON p.camping_id = c.id
+		WHERE id= ${id}
+		`;
+
+		return camping5;
+	} catch (e) {
+		console.error(e);
+	}
+}
