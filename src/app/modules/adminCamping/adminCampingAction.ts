@@ -33,11 +33,7 @@ const validationSchemaCamping = z.object({
 		.min(1)
 		.max(5, "Les étoiles doivent être entre 1 et 5"),
 	city: z.string().min(1, "La ville est requise"),
-	zipCode: z.coerce
-		.number()
-		.int()
-		.min(10000)
-		.max(99999, "Code postal invalide"),
+	zipCode: z.coerce.number().int().min(0).max(99999, "Code postal invalide"),
 	adress: z.string().min(1, "L'adresse est requise"),
 	infra: z.string(),
 	modelMh: z.string(),
@@ -108,17 +104,14 @@ export async function addInfrastructure(data: InfraProps) {
 
 export async function addCamping(formData: FormData, dataPhoto: PhotoProps) {
 	const data = formData.get("info") as string;
-	// const photoCamp = formData.get("photoCamp");
-	// const photoMh = formData.get("photoMh");
-	// const photoPitche = formData.get("photoPitch");
-	// const photoInfra = formData.get("photoInfra");
+
 	const infoCamping = JSON.parse(data);
 
 	const { photoCampName, photoMhName, photoPitchName, photoInfraName } =
 		dataPhoto;
 
 	const validateData = validationSchemaCamping.safeParse(infoCamping);
-
+	console.log(validateData.error);
 	if (validateData.success) {
 		const {
 			campingName,
@@ -192,7 +185,7 @@ export async function addCamping(formData: FormData, dataPhoto: PhotoProps) {
 		};
 
 		const campingId = await AdminCampingRepository.createCamping(campingInfo);
-		console.info(campingId);
+		console.log(campingId);
 		const rentalId = await AdminCampingRepository.createRental(
 			rentalInfo,
 			campingId,
@@ -212,7 +205,7 @@ export async function addCamping(formData: FormData, dataPhoto: PhotoProps) {
 			message: `Le camping ${campingName} a bien été ajouté`,
 		};
 	}
-	if (!validateData.success) {
+	if (validateData.success === false) {
 		return { message: "un problème est survenu" };
 	}
 }

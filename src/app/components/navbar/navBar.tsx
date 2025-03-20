@@ -1,9 +1,8 @@
 import Link from "next/link";
 import styles from "./navBar.module.css";
 import Image from "next/image";
-import type { ConnectedProps } from "@/app/assets/lib/definitions";
 
-export default function NavBar({ user, setUser }: ConnectedProps) {
+export default function NavBar() {
 	return (
 		<>
 			<nav className={styles.nav}>
