@@ -112,7 +112,7 @@ export default function AddInfoCamping({
 					<input
 						className={styles.input}
 						type="file"
-						{...register("photoMh")}
+						{...register("photoMh", { required: "Champ requis" })}
 					/>
 					<p className={styles.error}>{errors.linear?.message}</p>
 				</div>

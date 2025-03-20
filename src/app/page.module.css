@@ -1,0 +1,33 @@
+.h2 {
+	font-family: var(--title-font);
+	width: fit-content;
+	margin: auto;
+	font-size: 2.5em;
+	color: var(--primary-color);
+}
+
+.h3 {
+	font-family: var(--otherTitle-font);
+	width: fit-content;
+	margin: auto;
+	font-size: 4em;
+	color: var(--secondary-color);
+	font-weight: lighter;
+}
+.article {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2em;
+	margin: auto;
+	margin-bottom: 4em;
+	margin-top: 2em;
+	width: fit-content;
+	justify-content: center;
+}
+.camp {
+	margin: auto;
+}
+.main {
+	width: 90vw;
+	margin: auto;
+}

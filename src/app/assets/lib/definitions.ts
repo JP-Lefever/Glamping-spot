@@ -105,35 +105,36 @@ export type CampingProps = {
 	photoInfra: string;
 };
 
-// export type CampingInfoProps = {
-// 	id: number;
-// 	campingName: string;
-// 	description: string;
-// 	photoCamp: string;
-// 	opening: Date;
-// 	closing: Date;
-// 	email: string;
-// 	tel: number;
-// 	stars: number;
-// 	city: string;
-// 	zipCode: number;
-// 	adress: string;
-// 	infra: string;
-// 	modelMh: string;
-// 	sizeMh: number;
-// 	max_pers: number;
-// 	pricePerNight: number;
-// 	price_night: string;
-// 	photoMh: string;
-// 	linear: number;
-// 	typePitche: string;
-// 	size: number;
-// 	pricePitche: number;
-// 	maxPersPitche: number;
-// 	photoPitche: string;
-// 	photoInfra: string;
-// 	infra_name: string;
-// };
+export interface CampingDetailsProps {
+	id: string;
+	label: string;
+	email: string;
+	tel: string;
+	city: string;
+	zipcode: number;
+	adress: string;
+	description: string;
+	stars: number;
+	opening: Date;
+	closing: Date;
+	photo: string;
+
+	openingpitch: Date;
+	closingpitch: Date;
+	photopitch: string;
+	sizepitch: number;
+	is_electrified: boolean;
+	power: number;
+	price_night: number;
+	maxperspitch: number;
+
+	sizemh: number;
+	maxpersmh: number;
+	pricepernight: number;
+	openingmh: Date;
+	closingmh: Date;
+	photomh: string;
+}
 
 export type UserProps = {
 	id: number;
