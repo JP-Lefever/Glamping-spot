@@ -146,7 +146,7 @@ export type UserProps = {
 	birthdate: Date;
 	city: string;
 	zipCode: number;
-	tel: number;
+	tel: string;
 	password: string;
 	confirmpassword: string;
 };
