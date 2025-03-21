@@ -12,7 +12,7 @@ export default function CardCamping({
 }: { campingDetail: CampingDetailsProps }) {
 	return (
 		<>
-			<Link href={`/${campingDetail.id}/details`}>
+			<Link className={styles.link} href={`/${campingDetail.id}/details`}>
 				<section className={styles.card}>
 					<Image
 						className={styles.img}
