@@ -4,11 +4,13 @@ import { AtSign } from "lucide-react";
 import { CalendarCheck } from "lucide-react";
 import styles from "./page.module.css";
 import { fetchDetails } from "@/app/assets/data/campingData";
+import Image from "next/image";
 
 export default async function DetailPage({
 	params,
 }: { params: { id: string } }) {
 	const infoCamping = await fetchDetails(params.id);
+	console.info(infoCamping);
 
 	const formatedDate = (date: Date) => {
 		const newDate = new Date(date);
@@ -24,15 +26,15 @@ export default async function DetailPage({
 			{infoCamping && (
 				<section className={styles.section}>
 					<article className={styles.header}>
-						{/* <img
+						<Image
 							className={styles.imgHeader}
-							src={`${import.meta.env.VITE_API_URL}/uploads/${infoCamping.photoCamp}`}
-							alt={infoCamping.campingName}
-						/> */}
+							src={`/uploads/${infoCamping.photo}`}
+							alt={infoCamping.label}
+							width={1000}
+							height={760}
+						/>
 					</article>
-					<h2 className={styles.main_h2}>
-						Camping club {infoCamping.campingName}
-					</h2>
+					<h2 className={styles.main_h2}>Camping club {infoCamping.label}</h2>
 					<h3 className={styles.main_h3}>Destination {infoCamping.city}</h3>
 					<div className={styles.info_generales}>
 						<article className={styles.article_presentation}>
@@ -42,7 +44,7 @@ export default async function DetailPage({
 								<div>
 									<p>{infoCamping.adress}</p>
 									<p>{infoCamping.city}</p>
-									<p>{infoCamping.zipCode}</p>
+									<p>{infoCamping.zipcode}</p>
 								</div>
 							</div>
 							<div className={styles.div_info}>
@@ -69,20 +71,22 @@ export default async function DetailPage({
 					<article className={styles.article}>
 						<h2 className={styles.h2}>Nos Cottages</h2>
 						<div className={styles.cottage}>
-							<img
+							<Image
 								className={styles.imgMh}
-								src={`${import.meta.env.VITE_API_URL}/uploads/${infoCamping.photoMh}`}
-								alt={infoCamping.modelMh}
+								src={`/uploads/${infoCamping.photomh}`}
+								alt={infoCamping.typemh}
+								width={1000}
+								height={760}
 							/>
 							<div className={styles.info_cottage}>
 								<div className={styles.divButton}>
-									<h3>Découvrez nos tous nouveaux mobilhomes</h3>
-									<p>{infoCamping.modelMh}</p>
-									<p>{infoCamping.sizeMh}</p>
-									<p>Jusqu'à {infoCamping.max_pers} personnes</p>
+									<h3>Découvrez nos tous nouveaux hébergement</h3>
+									<p>{infoCamping.typemh}</p>
+									<p>{infoCamping.sizemh} m2</p>
+									<p>Jusqu'à {infoCamping.maxpersmh} personnes</p>
 									<p>
 										A partir de
-										<strong> {infoCamping.pricePerNight} € / nuit</strong>
+										<strong> {infoCamping.pricepernight} € / nuit</strong>
 									</p>
 								</div>
 								<button className={styles.button} type="button">
@@ -94,17 +98,19 @@ export default async function DetailPage({
 					<article className={styles.article}>
 						<h2 className={styles.h2}>Nos emplacements</h2>
 						<div className={styles.pitches}>
-							<img
+							<Image
 								className={styles.imgPitche}
-								src={`${import.meta.env.VITE_API_URL}/uploads/${infoCamping.photoPitche}`}
-								alt={infoCamping.typePitche}
+								src={`/uploads/${infoCamping.photopitch}`}
+								alt={infoCamping.typepitch}
+								width={1000}
+								height={760}
 							/>
 							<div className={styles.info_pitches}>
 								<div className={styles.divButton}>
 									<h3>Des emplacement spacieux et ensolleillé</h3>
-									<p>Taille : {infoCamping.size} m2</p>
+									<p>Taille : {infoCamping.sizepitch} m2</p>
 									<p>Des emplacements electrifiés</p>
-									<p>Jusqu'à {infoCamping.maxPersPitche} personnes</p>
+									<p>Jusqu'à {infoCamping.maxperspitch} personnes</p>
 									<p>
 										A partir de
 										<strong> {infoCamping.price_night} € / nuit</strong>
@@ -119,16 +125,17 @@ export default async function DetailPage({
 					<article className={styles.article}>
 						<h2 className={styles.h2}>Nos infrastructures</h2>
 						<div className={styles.infra}>
-							<img
+							<Image
 								className={styles.imgInfra}
-								src={`${import.meta.env.VITE_API_URL}/uploads/${infoCamping.photoInfra}`}
-								alt={infoCamping.typePitche}
+								src={`/uploads/${infoCamping.photoinfra}`}
+								alt={infoCamping.labelinfra}
+								width={1000}
+								height={760}
 							/>
 							<div className={styles.info_infra}>
 								<div className={styles.divButton}>
 									<h3>Venez profitez nos infrastructures</h3>
-									<p>{infoCamping.infra}</p>
-									<p>{infoCamping.infra_name}</p>
+									<p>{infoCamping.labelinfra}</p>
 								</div>
 								<button className={styles.button} type="button">
 									Voir toutes nos infrastructures

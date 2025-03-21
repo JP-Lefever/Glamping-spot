@@ -62,7 +62,7 @@ async function seedKindInfra() {
 	await sql`
   CREATE TABLE IF NOT EXISTS kind_infra(
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY NOT NULL,
-  label VARCHAR(255) NOT NULL
+    label VARCHAR(255) NOT NULL
   )`;
 }
 
@@ -74,8 +74,8 @@ CREATE TABLE IF NOT EXISTS infrastructure(
      kind_infra_id UUID NOT NULL,
      camping_id UUID NOT NULL,
      photo VARCHAR(255),
+     CONSTRAINT fk_kind_infra_infra FOREIGN KEY(kind_infra_id) REFERENCES kind_infra(id),
      CONSTRAINT fk_infra_camping FOREIGN KEY(camping_id) REFERENCES camping(id)
-     CONSTRAINT fk_kind_infra FOREIGN KEY(kind_infra_id) REFERENCES kind_infra(id)
 );
     `;
 }
