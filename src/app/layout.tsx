@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import { Bounce, ToastContainer } from "react-toastify";
+import NavBar from "./components/navbar/navBar";
 
 export const metadata: Metadata = {
 	title: "Create Next App",

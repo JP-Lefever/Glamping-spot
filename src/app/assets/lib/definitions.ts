@@ -118,7 +118,7 @@ export interface CampingDetailsProps {
 	opening: Date;
 	closing: Date;
 	photo: string;
-
+	typemh: string;
 	openingpitch: Date;
 	closingpitch: Date;
 	photopitch: string;
@@ -127,13 +127,15 @@ export interface CampingDetailsProps {
 	power: number;
 	price_night: number;
 	maxperspitch: number;
-
+	typepitch: string;
 	sizemh: number;
 	maxpersmh: number;
 	pricepernight: number;
 	openingmh: Date;
 	closingmh: Date;
 	photomh: string;
+	photoinfra: string;
+	labelinfra: string;
 }
 
 export type UserProps = {
