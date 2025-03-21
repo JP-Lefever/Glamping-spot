@@ -4,7 +4,9 @@ import postgres from "postgres";
 const sql = postgres(process.env.POSTGRES_URL as string, { ssl: "require" });
 
 class RegisterRepository {
-	async createUser(data: UserProps) {
+	async createUser(
+		data: Omit<UserProps, "id" | "confirmpassword">,
+	): Promise<Record<string, string>> {
 		const {
 			email,
 			firstName,
@@ -17,14 +19,16 @@ class RegisterRepository {
 		} = data;
 
 		try {
-			const result = await sql`
+			await sql`
     INSERT INTO "user" (email, firstname, lastname, birthdate, city, zipcode, tel, password)
     VALUES (${email},${firstName},${lastName},${birthdate},${city},${zipCode},${tel},${password})
     `;
-			console.log(result);
+
 			return { message: "Le compte a bien été créé" };
-		} catch (e) {
-			console.log(e);
+		} catch (error) {
+			return {
+				message: "Une erreur est survenu, veuillez verifier les champs",
+			};
 		}
 	}
 }
