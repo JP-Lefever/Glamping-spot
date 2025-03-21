@@ -6,9 +6,10 @@ import styles from "./page.module.css";
 import { fetchDetails } from "@/app/assets/data/campingData";
 import Image from "next/image";
 
-export default async function DetailPage({
-	params,
-}: { params: { id: string } }) {
+export default async function DetailPage(props: {
+	params: Promise<{ id: string }>;
+}) {
+	const params = await props.params;
 	const infoCamping = await fetchDetails(params.id);
 	console.info(infoCamping);
 
