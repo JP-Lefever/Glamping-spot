@@ -14,7 +14,6 @@ async function seedUser() {
   city VARCHAR(255) NOT NULL,
   zipCode INT NOT NULL,
   tel VARCHAR(10),
-  photo VARCHAR(255),
   password VARCHAR(255) NOT NULL,
   role VARCHAR(30) DEFAULT 'user'
 );
@@ -142,6 +141,7 @@ CREATE TABLE IF NOT EXISTS pitches(
      `;
 }
 
+
 export async function GET() {
 	try {
 		const result = await sql.begin(async (sql) => [
@@ -154,6 +154,7 @@ export async function GET() {
 			seedRental(),
 			seedTypePitches(),
 			seedPitches(),
+    
 		]);
 
 		return Response.json({ message: "Database seeded successfully" });
