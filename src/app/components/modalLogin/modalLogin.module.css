@@ -1,78 +1,83 @@
 .div {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin-top: 10vh;
-  margin-right: 7em;
-  max-width: 25rem;
-  width: 100%;
-  background-color: var(--cold-color);
-  border: solid 1px var(--primary-color);
-  border-radius: 1rem;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-  font-family: var(--text-font);
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-top: 10vh;
+	margin-right: 7em;
+	max-width: 25rem;
+	width: 100%;
+	background-color: var(--cold-color);
+	border: solid 1px var(--primary-color);
+	border-radius: 1rem;
+	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+	padding: 2rem;
+	font-family: var(--text-font);
+	z-index: 20;
+}
+
+.closeModal {
+	border: solid red 1px;
 }
 
 .h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  margin-bottom: 1.5rem;
-  text-align: center;
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: var(--primary-color);
+	margin-bottom: 1.5rem;
+	text-align: center;
 }
 
 .form > * + * {
-  margin-top: 1rem;
+	margin-top: 1rem;
 }
 
 .label {
-  display: block;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--primary-color);
-  margin-bottom: 0.25rem;
+	display: block;
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: var(--primary-color);
+	margin-bottom: 0.25rem;
 }
 
 .input {
-  width: 100%;
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--light-color);
-  border-radius: 0.5rem;
-  outline: none;
-  transition: all 0.2s ease-in-out;
+	width: 100%;
+	padding: 0.5rem 1rem;
+	border: 1px solid var(--light-color);
+	border-radius: 0.5rem;
+	outline: none;
+	transition: all 0.2s ease-in-out;
 }
 
 .input:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px var(--primary-color);
+	border-color: var(--primary-color);
+	box-shadow: 0 0 0 2px var(--primary-color);
 }
 
 .role {
-  color: var(--warm-color);
-  font-size: 0.875rem;
-  margin-top: 0.5rem;
+	color: var(--warm-color);
+	font-size: 0.875rem;
+	margin-top: 0.5rem;
 }
 
 .button {
-  width: 100%;
-  background-color: var(--primary-color);
-  color: white;
-  font-weight: 500;
-  padding: 0.625rem;
-  border-radius: 0.5rem;
-  transition: background-color 0.3s ease;
-  font-size: 1em;
+	width: 100%;
+	background-color: var(--primary-color);
+	color: white;
+	font-weight: 500;
+	padding: 0.625rem;
+	border-radius: 0.5rem;
+	transition: background-color 0.3s ease;
+	font-size: 1em;
 }
 
 .button:hover {
-  background-color: var(--primary-color);
-  opacity: 90%;
+	background-color: var(--primary-color);
+	opacity: 90%;
 }
 
 .link {
-  text-decoration: none;
-  color: var(--primary-color);
-  display: block;
-  text-align: center;
+	text-decoration: none;
+	color: var(--primary-color);
+	display: block;
+	text-align: center;
 }

@@ -111,7 +111,7 @@ export async function addCamping(formData: FormData, dataPhoto: PhotoProps) {
 		dataPhoto;
 
 	const validateData = validationSchemaCamping.safeParse(infoCamping);
-	console.log(validateData.error);
+
 	if (validateData.success) {
 		const {
 			campingName,

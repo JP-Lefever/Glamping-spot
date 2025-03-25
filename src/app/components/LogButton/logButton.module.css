@@ -1,46 +1,46 @@
 .button {
-  background-color: var(--light-color);
-  border-radius: 50%;
-  padding: 0.5em;
-  border: var(--primary-color) solid 4px;
-  position: relative;
+	background-color: var(--light-color);
+	border-radius: 50%;
+	padding: 0.5em;
+	border: var(--primary-color) solid 4px;
+	position: relative;
 }
 .button_logout {
-  background-color: var(--light-color);
-  border-radius: 50%;
-  padding: 0.5em;
-  border: none;
+	background-color: var(--light-color);
+	border-radius: 50%;
+	padding: 0.5em;
+	border: none;
 }
 
 .menu {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  border-radius: 10px;
-  z-index: 200;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	border-radius: 10px;
+	z-index: 200;
 }
 .link {
-  background-color: var(--cold-color);
-  color: var(--primary-color);
-  font-family: var(--text-font);
-  list-style: none;
-  text-decoration: none;
-  font-size: 1em;
-  font-weight: bold;
-  padding: 1em;
-  border: none;
-  display: flex;
+	background-color: var(--cold-color);
+	color: var(--primary-color);
+	font-family: var(--text-font);
+	list-style: none;
+	text-decoration: none;
+	font-size: 1em;
+	font-weight: bold;
+	padding: 1em;
+	border: none;
+	display: flex;
 }
 .link:first-child {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom: 2px solid var(--primary-color);
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border-bottom: 2px solid var(--primary-color);
 }
 .link:last-child {
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
 }
 
 .icon {
-  margin-right: 0.8em;
+	margin-right: 0.8em;
 }

@@ -5,7 +5,7 @@ const sql = postgres(process.env.POSTGRES_URL as string, { ssl: "require" });
 
 class RegisterRepository {
 	async createUser(
-		data: Omit<UserProps, "id" | "confirmpassword">,
+		data: Omit<UserProps, "id" | "confirmpassword" | "role">,
 	): Promise<Record<string, string>> {
 		const {
 			email,

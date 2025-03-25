@@ -28,3 +28,8 @@
 	font-weight: bold;
 	font-size: 1.2em;
 }
+
+.logButton {
+	border: none;
+	background-color: var(--third-color);
+}
