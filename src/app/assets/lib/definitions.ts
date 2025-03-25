@@ -140,8 +140,8 @@ export interface CampingDetailsProps {
 
 export type UserProps = {
 	id: string;
-	firstName: string;
-	lastName: string;
+	firstname: string;
+	lastname: string;
 	email: string;
 	birthdate: Date;
 	city: string;

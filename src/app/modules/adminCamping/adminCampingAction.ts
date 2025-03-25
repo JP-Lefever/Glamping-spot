@@ -185,7 +185,7 @@ export async function addCamping(formData: FormData, dataPhoto: PhotoProps) {
 		};
 
 		const campingId = await AdminCampingRepository.createCamping(campingInfo);
-		console.log(campingId);
+
 		const rentalId = await AdminCampingRepository.createRental(
 			rentalInfo,
 			campingId,

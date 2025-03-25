@@ -5,8 +5,9 @@ import { useForm } from "react-hook-form";
 import type { UserProps } from "../../assets/lib/definitions";
 import styles from "./modalLogin.module.css";
 import Link from "next/link";
-import { signIn } from "../../../../auth";
-import { authenticate } from "@/app/modules/auth/authAction";
+
+import { authenticate, userSession } from "@/app/modules/auth/authAction";
+import { useSession } from "next-auth/react";
 
 export default function ModalLogin({ closeModal }: { closeModal: () => void }) {
 	const {
@@ -18,8 +19,10 @@ export default function ModalLogin({ closeModal }: { closeModal: () => void }) {
 
 	const onSubmit = async (user: UserProps) => {
 		const response = await authenticate(user);
-		console.log(response);
+		const session = await userSession();
 	};
+	// const { data: session, status } = useSession();
+	// console.log("status", status);
 
 	return (
 		<>

@@ -4,6 +4,7 @@ import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
 import { getUser } from "@/app/modules/auth/authAction";
 import argon from "argon2";
+import { redirect } from "next/navigation";
 
 export const { auth, signIn, signOut } = NextAuth({
 	...authConfig,
@@ -27,13 +28,15 @@ export const { auth, signIn, signOut } = NextAuth({
 
 				if (!passwordMatch) return null;
 
-				return {
+				const userSession = {
 					id: user.id.toString(),
-					firstName: user.firstName,
-					lastName: user.lastName,
+					firstname: user.firstname,
+					lastname: user.lastname,
 					email: user.email,
 					role: user.role,
 				};
+				console.log(userSession);
+				return userSession;
 			},
 		}),
 	],

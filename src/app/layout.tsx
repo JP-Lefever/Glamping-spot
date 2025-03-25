@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Bounce, ToastContainer } from "react-toastify";
 import NavBar from "./components/navbar/navBar";
+import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -30,7 +31,7 @@ export default function RootLayout({
 					theme="light"
 					transition={Bounce}
 				/>
-				{children}
+				<SessionProvider>{children}</SessionProvider>
 			</body>
 		</html>
 	);
