@@ -35,15 +35,12 @@ export default function NavBar() {
 						</Link>
 					</li>
 				</ul>
-				<button
-					className={styles.logButton}
-					type="button"
-					onClick={() => setShow(true)}
-				>
-					<LogButton />
-				</button>
+				<ul className={styles.list}>
+					<li>
+						<LogButton />
+					</li>
+				</ul>
 			</nav>
-			{show && <ModalLogin closeModal={() => setShow(false)} />}
 		</>
 	);
 }

@@ -13,9 +13,9 @@ const minBirthdate = new Date(
 );
 
 const userSchema = z.object({
-	firstName: z.string().min(1, "Veuillez renseigner au moins 1 caractère"),
+	firstname: z.string().min(1, "Veuillez renseigner au moins 1 caractère"),
 
-	lastName: z.string(),
+	lastname: z.string(),
 
 	email: z.string().email("Email invalide"),
 

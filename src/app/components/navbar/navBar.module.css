@@ -30,6 +30,8 @@
 }
 
 .logButton {
-	border: none;
+	background-color: var(--light-color);
+	border-radius: 50%;
+	padding: 0.2em;
 	background-color: var(--third-color);
 }

@@ -2,8 +2,8 @@
 
 import type { UserProps } from "@/app/assets/lib/definitions";
 import authRepository from "./authRepository";
-import { signIn, auth } from "../../../../auth";
-import { getSession } from "next-auth/react";
+import { signIn, signOut } from "../../../../auth";
+import { redirect } from "next/navigation";
 
 export async function getUser(email: string) {
 	const user = await authRepository.readUserEmail(email);
@@ -23,28 +23,20 @@ export async function getUser(email: string) {
 
 export async function authenticate(user: UserProps) {
 	try {
-		const isLogged = await signIn("credentials", {
+		await signIn("credentials", {
 			redirect: false,
 			email: user.email,
 			password: user.password,
+			role: user.role,
+			firstname: user.firstname,
 		});
-
-		if (isLogged?.error) {
-			console.error("erreur", isLogged.eror);
-		}
 	} catch (error) {
 		console.error(error);
 	}
 }
 
-export async function userSession() {
-	const session = await auth();
-
-	if (!session) {
-		return new Response(JSON.stringify({ message: "Non authentifié" }), {
-			status: 401,
-		});
-	}
-
-	return new Response(JSON.stringify(session.user), { status: 200 });
+export async function logout() {
+	await signOut();
+	location.reload();
+	redirect("/login");
 }

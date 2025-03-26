@@ -1,12 +1,13 @@
-import NextAuth from "next-auth";
+import NextAuth, { User } from "next-auth";
 import { authConfig } from "./auth.config";
 import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
 import { getUser } from "@/app/modules/auth/authAction";
 import argon from "argon2";
-import { redirect } from "next/navigation";
+import type { UserProps } from "@/app/assets/lib/definitions";
+import { JWT } from "next-auth/jwt";
 
-export const { auth, signIn, signOut } = NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
 	...authConfig,
 	providers: [
 		Credentials({
@@ -28,16 +29,34 @@ export const { auth, signIn, signOut } = NextAuth({
 
 				if (!passwordMatch) return null;
 
-				const userSession = {
-					id: user.id.toString(),
+				return {
 					firstname: user.firstname,
-					lastname: user.lastname,
 					email: user.email,
 					role: user.role,
-				};
-				console.log(userSession);
-				return userSession;
+				} as UserProps;
 			},
 		}),
 	],
+	callbacks: {
+		async session({ session, token }) {
+			session.user = {
+				id: token.id as string,
+				emailVerified: null,
+				firstname: token.firstName as string,
+				email: token.email as string,
+				role: token.role as string,
+			};
+
+			return session;
+		},
+		async jwt({ token, user }) {
+			if (user) {
+				token.firstName = user.firstname;
+				token.email = user.email;
+				token.role = user.role;
+			}
+
+			return token;
+		},
+	},
 });
