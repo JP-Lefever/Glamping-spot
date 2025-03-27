@@ -3,8 +3,8 @@ import type {
 	ModelProps,
 	InfraProps,
 	PitchesProps,
-	CampingProps,
 	CampingDetailsProps,
+	UserProps,
 } from "../lib/definitions";
 
 const sql = postgres(process.env.POSTGRES_URL as string, { ssl: "require" });

@@ -25,7 +25,7 @@ const userSchema = z.object({
 
 	city: z.string().min(5, "Veuillez renseigner au moins 1 caractère"),
 
-	zipCode: z.coerce.number().min(1, "Veuillez renseigner au moins 5 chiffres"),
+	zipcode: z.coerce.number().min(1, "Veuillez renseigner au moins 5 chiffres"),
 
 	tel: z.string().min(10).max(14),
 
@@ -53,5 +53,31 @@ export const createUser = async (
 		}
 	} catch (e) {
 		console.error(e);
+	}
+};
+
+export const updateUser = async (
+	user: Omit<UserProps, "id" | "confirmpassword" | "role" | "password">,
+) => {
+	const parseDate = (date: string | Date) => {
+		if (typeof date === "string") {
+			const [day, month, year] = date.split("/").map(Number);
+			return new Date(year, month - 1, day);
+		}
+		return date;
+	};
+
+	const { birthdate, ...rest } = user;
+	const validBirthDate = parseDate(birthdate);
+
+	const userToValidate = { ...rest, birthdate: validBirthDate };
+
+	const updateUserSchema = userSchema.omit({ password: true });
+	const validateData = updateUserSchema.safeParse(userToValidate);
+
+	if (validateData.success) {
+		const userUpdated = await RegisterRepository.updateUser(validateData.data);
+
+		return { success: true, message: userUpdated?.message };
 	}
 };

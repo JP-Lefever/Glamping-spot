@@ -1,4 +1,5 @@
 import type { UserProps } from "@/app/assets/lib/definitions";
+
 import postgres from "postgres";
 
 const sql = postgres(process.env.POSTGRES_URL as string, { ssl: "require" });
@@ -13,7 +14,7 @@ class RegisterRepository {
 			lastname,
 			birthdate,
 			city,
-			zipCode,
+			zipcode,
 			tel,
 			password,
 		} = data;
@@ -21,7 +22,7 @@ class RegisterRepository {
 		try {
 			await sql`
     INSERT INTO "user" (email, firstname, lastname, birthdate, city, zipcode, tel, password)
-    VALUES (${email},${firstname},${lastname},${birthdate},${city},${zipCode},${tel},${password})
+    VALUES (${email},${firstname},${lastname},${birthdate},${city},${zipcode},${tel},${password})
     `;
 
 			return { message: "Le compte a bien été créé" };
@@ -29,6 +30,21 @@ class RegisterRepository {
 			return {
 				message: "Une erreur est survenu, veuillez verifier les champs",
 			};
+		}
+	}
+	async updateUser(
+		user: Omit<UserProps, "id" | "confirmpassword" | "role" | "password">,
+	) {
+		const { firstname, lastname, email, birthdate, city, zipcode, tel } = user;
+		try {
+			await sql`
+			UPDATE "user"
+			SET firstname = ${firstname}, lastname= ${lastname}, email=${email}, birthdate= ${birthdate}, city = ${city}, zipcode =${zipcode}, tel = ${tel}
+			WHERE email = ${email}
+			`;
+			return { message: "Le profil a été modifié avec succès" };
+		} catch (e) {
+			console.error(e);
 		}
 	}
 }

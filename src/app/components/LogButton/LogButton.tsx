@@ -49,7 +49,7 @@ export default function LogButton() {
 						<Link
 							onClick={() => setOpenBurgerMenu(false)}
 							className={styles.link}
-							href="/profil"
+							href={`/profile/${session?.user.email}`}
 						>
 							<UserRound className={styles.icon} />
 							Mon profil
