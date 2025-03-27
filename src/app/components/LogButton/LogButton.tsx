@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { logout } from "../../modules/auth/authAction";
-import { useRouter } from "next/navigation";
 
 export default function LogButton() {
 	const { data: session } = useSession();
@@ -13,7 +12,6 @@ export default function LogButton() {
 	const handleOpenBurgerMenu = () => {
 		setOpenBurgerMenu(!openBurgerMenu);
 	};
-	const router = useRouter();
 
 	const handleLogout = async () => {
 		const response = await logout();

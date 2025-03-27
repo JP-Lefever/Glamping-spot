@@ -5,13 +5,24 @@ export const authConfig = {
 		signIn: "/login",
 	},
 	callbacks: {
-		authorized({ auth }) {
+		authorized({ auth, request: { nextUrl } }) {
+			const isUserLoggedIn = auth?.user.role === "user";
+			const isAdminLoggedIn = auth?.user.role === "admin";
 			const isLoggedIn = !!auth?.user;
+			const isOnAdmin = nextUrl.pathname.startsWith("/admin");
 
-			if (isLoggedIn) {
+			if (isOnAdmin) {
+				if (isUserLoggedIn) {
+					return false;
+				}
+				if (!isLoggedIn) {
+					return false;
+				}
 				return true;
 			}
-			return false;
+			if (isAdminLoggedIn) {
+				return Response.redirect(new URL("/admin", nextUrl));
+			}
 		},
 	},
 	providers: [],
