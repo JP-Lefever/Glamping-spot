@@ -23,20 +23,26 @@ export async function getUser(email: string) {
 
 export async function authenticate(user: UserProps) {
 	try {
-		await signIn("credentials", {
+		const response = await signIn("credentials", {
 			redirect: false,
 			email: user.email,
 			password: user.password,
 			role: user.role,
 			firstname: user.firstname,
 		});
+		console.log(response);
+		return {
+			status: "authenticated",
+			role: user.role,
+			message: `Bienvenu chez Glamping spot ${user.firstname}`,
+		};
 	} catch (error) {
 		console.error(error);
 	}
 }
 
 export async function logout() {
-	await signOut();
-	location.reload();
-	redirect("/login");
+	await signOut({ redirect: false });
+
+	return { status: "logOut", message: "A bientot" };
 }

@@ -1,24 +1,28 @@
+"use client";
 import { Power, SquareMenu, UserRound } from "lucide-react";
-
 import styles from "./logButton.module.css";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { logout } from "../../modules/auth/authAction";
+import { useRouter } from "next/navigation";
 
 export default function LogButton() {
-	const { data: session, update } = useSession();
+	const { data: session } = useSession();
 	const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
 	const handleOpenBurgerMenu = () => {
 		setOpenBurgerMenu(!openBurgerMenu);
 	};
-	// const handleLogout = async () => {
-	// 	await logout();
-	// 	await update();
-	// 	if(!session?.user){
-	// 		location.reload()
-	// 	}
-	// };
+	const router = useRouter();
+
+	const handleLogout = async () => {
+		const response = await logout();
+
+		console.log(response?.status);
+		if (response?.status === "logOut") {
+			location.reload();
+		}
+	};
 
 	return (
 		<>
@@ -50,12 +54,15 @@ export default function LogButton() {
 							<UserRound className={styles.icon} />
 							Mon profil
 						</Link>
-						<form action={logout}>
-							<button type="submit" className={styles.link}>
-								<Power className={styles.icon} />
-								Se deconnecter
-							</button>
-						</form>
+
+						<button
+							type="button"
+							className={styles.link}
+							onClick={handleLogout}
+						>
+							<Power className={styles.icon} />
+							Se deconnecter
+						</button>
 					</ul>
 				)}
 			</section>

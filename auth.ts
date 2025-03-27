@@ -5,9 +5,8 @@ import { z } from "zod";
 import { getUser } from "@/app/modules/auth/authAction";
 import argon from "argon2";
 import type { UserProps } from "@/app/assets/lib/definitions";
-import { JWT } from "next-auth/jwt";
 
-export const { handlers, auth, signIn, signOut } = NextAuth({
+export const { auth, signIn, signOut } = NextAuth({
 	...authConfig,
 	providers: [
 		Credentials({
@@ -39,13 +38,15 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 	],
 	callbacks: {
 		async session({ session, token }) {
-			session.user = {
-				id: token.id as string,
-				emailVerified: null,
-				firstname: token.firstName as string,
-				email: token.email as string,
-				role: token.role as string,
-			};
+			if (token) {
+				session.user = {
+					id: token.id as string,
+					emailVerified: null,
+					firstname: token.firstName as string,
+					email: token.email as string,
+					role: token.role as string,
+				};
+			}
 
 			return session;
 		},

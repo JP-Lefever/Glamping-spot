@@ -1,15 +1,9 @@
-"use client";
 import Link from "next/link";
 import styles from "./navBar.module.css";
 import Image from "next/image";
 import LogButton from "../LogButton/LogButton";
-import ModalLogin from "../modalLogin/ModalLogin";
-import { useSearchParams } from "next/navigation";
-import { useState } from "react";
 
 export default function NavBar() {
-	const [show, setShow] = useState(false);
-
 	return (
 		<>
 			<nav className={styles.nav}>

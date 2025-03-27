@@ -1,11 +1,10 @@
 "use client";
+
 import { useEffect, type ReactNode } from "react";
 import { useForm } from "react-hook-form";
-
 import type { UserProps } from "../../assets/lib/definitions";
 import styles from "./modalLogin.module.css";
 import Link from "next/link";
-
 import { authenticate } from "@/app/modules/auth/authAction";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
@@ -15,27 +14,27 @@ export default function ModalLogin() {
 	const {
 		register,
 		formState: { errors },
-
 		handleSubmit,
 	} = useForm<UserProps>();
+
+	const { data: session } = useSession();
+
 	const onSubmit = async (user: UserProps) => {
 		const response = await authenticate(user);
-		if (response !== null) {
+
+		if (response?.status === "authenticated") {
 			location.reload();
 		}
 	};
-	const { data: session } = useSession();
 	useEffect(() => {
-		if (session?.user) {
-			if (session.user.role === "admin") {
-				redirect("/admin");
-			}
-			if (session.user.role === "user") {
-				redirect("/");
-			}
+		if (session?.user.role === "admin") {
+			redirect("/admin");
+		}
+		if (session?.user.role === "user") {
+			redirect("/");
 		}
 	}, [session]);
-	console.log(session);
+
 	return (
 		<>
 			<section className={styles.section}>
