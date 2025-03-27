@@ -180,13 +180,13 @@ export default function FormRegister() {
 						<input
 							type="number"
 							className={styles.input}
-							{...register("zipCode", {
+							{...register("zipcode", {
 								required: "Le code postal est obligatoire",
 							})}
 						/>
-						{errors.zipCode && (
+						{errors.zipcode && (
 							<p className={styles.role}>
-								{errors.zipCode.message as ReactNode}
+								{errors.zipcode.message as ReactNode}
 							</p>
 						)}
 					</div>
