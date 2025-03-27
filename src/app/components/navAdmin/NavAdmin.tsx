@@ -4,6 +4,7 @@ import { Power } from "lucide-react";
 import styles from "./navAdmin.module.css";
 import Link from "next/link";
 import { logout } from "../../modules/auth/authAction";
+import { toast } from "react-toastify";
 
 export default function NavAdmin() {
 	const [openMenu, setOpenMenu] = useState(false);
@@ -15,7 +16,10 @@ export default function NavAdmin() {
 		const response = await logout();
 
 		if (response?.status === "logOut") {
-			location.reload();
+			toast.success(response.message);
+			setTimeout(() => {
+				location.reload();
+			}, 1500);
 		}
 	};
 	return (

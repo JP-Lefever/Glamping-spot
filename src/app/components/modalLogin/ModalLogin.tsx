@@ -9,6 +9,7 @@ import { authenticate } from "@/app/modules/auth/authAction";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { redirect } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function ModalLogin() {
 	const {
@@ -23,7 +24,10 @@ export default function ModalLogin() {
 		const response = await authenticate(user);
 
 		if (response?.status === "authenticated") {
-			location.reload();
+			toast.success(response.message);
+			setTimeout(() => {
+				location.reload();
+			}, 1500);
 		}
 	};
 	useEffect(() => {

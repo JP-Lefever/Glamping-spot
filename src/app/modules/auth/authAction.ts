@@ -3,7 +3,6 @@
 import type { UserProps } from "@/app/assets/lib/definitions";
 import authRepository from "./authRepository";
 import { signIn, signOut } from "../../../../auth";
-import { redirect } from "next/navigation";
 
 export async function getUser(email: string) {
 	const user = await authRepository.readUserEmail(email);
@@ -23,18 +22,17 @@ export async function getUser(email: string) {
 
 export async function authenticate(user: UserProps) {
 	try {
-		const response = await signIn("credentials", {
+		await signIn("credentials", {
 			redirect: false,
 			email: user.email,
 			password: user.password,
 			role: user.role,
 			firstname: user.firstname,
 		});
-		console.log(response);
+
 		return {
 			status: "authenticated",
-			role: user.role,
-			message: `Bienvenu chez Glamping spot ${user.firstname}`,
+			message: "Bienvenu chez Glamping spot",
 		};
 	} catch (error) {
 		console.error(error);

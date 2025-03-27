@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { logout } from "../../modules/auth/authAction";
+import { toast } from "react-toastify";
 
 export default function LogButton() {
 	const { data: session } = useSession();
@@ -18,6 +19,7 @@ export default function LogButton() {
 
 		console.log(response?.status);
 		if (response?.status === "logOut") {
+			toast.success(response.message);
 			location.reload();
 		}
 	};
