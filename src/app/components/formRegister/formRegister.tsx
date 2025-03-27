@@ -3,12 +3,12 @@
 import { type ReactNode, useRef } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { Bounce, ToastContainer, toast } from "react-toastify";
-import logo from "../../../../public/images/logo-camp.jpg";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 import type { UserProps } from "../../assets/lib/definitions";
 import styles from "./formRegister.module.css";
 import { createUser } from "@/app/modules/register/registerAction";
+import Link from "next/link";
 
 export default function FormRegister() {
 	const {
@@ -56,27 +56,27 @@ export default function FormRegister() {
 				transition={Bounce}
 			/>
 			;
-			<a className={styles.linkLogo} href="/">
+			<Link className={styles.linkLogo} href="/">
 				<Image
 					className={styles.logo}
-					src={logo}
+					src="/images/logo-camp.jpg"
 					alt="Logo camping"
 					width={1000}
 					height={760}
 				/>
-			</a>
+			</Link>
 			<div className={styles.div}>
 				<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 					<h2 className={styles.h2}>Inscription</h2>
 					<div>
-						<label htmlFor="firstName" className={styles.label}>
+						<label htmlFor="firstname" className={styles.label}>
 							Prénom
 						</label>
 						<input
 							type="text"
 							className={styles.input}
 							placeholder="John"
-							{...register("firstName", {
+							{...register("firstname", {
 								required: "Le prénom est obligatoire",
 								minLength: {
 									value: 2,
@@ -84,21 +84,21 @@ export default function FormRegister() {
 								},
 							})}
 						/>
-						{errors.firstName && (
+						{errors.firstname && (
 							<p className={styles.role}>
-								{errors.firstName?.message as ReactNode}
+								{errors.lastname?.message as ReactNode}
 							</p>
 						)}
 					</div>
 					<div>
-						<label htmlFor="lastName" className={styles.label}>
+						<label htmlFor="lastname" className={styles.label}>
 							Nom
 						</label>
 						<input
 							type="text"
 							className={styles.input}
 							placeholder="Doe"
-							{...register("lastName", {
+							{...register("lastname", {
 								required: "Le nom est obligatoire",
 								minLength: {
 									value: 2,
@@ -106,9 +106,9 @@ export default function FormRegister() {
 								},
 							})}
 						/>
-						{errors.lastName && (
+						{errors.lastname && (
 							<p className={styles.role}>
-								{errors.lastName?.message as ReactNode}
+								{errors.lastname?.message as ReactNode}
 							</p>
 						)}
 					</div>

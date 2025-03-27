@@ -13,9 +13,9 @@ const minBirthdate = new Date(
 );
 
 const userSchema = z.object({
-	firstName: z.string().min(1, "Veuillez renseigner au moins 1 caractère"),
+	firstname: z.string().min(1, "Veuillez renseigner au moins 1 caractère"),
 
-	lastName: z.string(),
+	lastname: z.string(),
 
 	email: z.string().email("Email invalide"),
 
@@ -36,7 +36,7 @@ const userSchema = z.object({
 });
 
 export const createUser = async (
-	data: Omit<UserProps, "id" | "confirmpassword">,
+	data: Omit<UserProps, "id" | "confirmpassword" | "role">,
 ) => {
 	const validateData = userSchema.safeParse(data);
 	try {
@@ -48,12 +48,10 @@ export const createUser = async (
 			}
 
 			const insertUser = await RegisterRepository.createUser(validateData.data);
-			console.log(insertUser);
 
 			return { success: true, message: insertUser.message };
 		}
-		console.log(validateData.error);
 	} catch (e) {
-		console.log(e);
+		console.error(e);
 	}
 };

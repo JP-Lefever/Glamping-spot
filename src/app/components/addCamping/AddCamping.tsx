@@ -46,14 +46,8 @@ export default function FormAddCamping({
 			body: formData,
 		});
 		const dataPhoto = await responseUpload.json();
-		if (responseUpload.ok) {
-			console.log("photo uploaded");
-		} else {
-			console.log("Un problem est survenu");
-		}
 
 		const response = await addCamping(formData, dataPhoto);
-		console.info(response);
 
 		if (response?.success) {
 			toast.success(response.message);

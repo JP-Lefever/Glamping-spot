@@ -139,14 +139,15 @@ export interface CampingDetailsProps {
 }
 
 export type UserProps = {
-	id: number;
-	firstName: string;
-	lastName: string;
+	id: string;
+	firstname: string;
+	lastname: string;
 	email: string;
 	birthdate: Date;
 	city: string;
 	zipCode: number;
 	tel: string;
+	role: string;
 	password: string;
 	confirmpassword: string;
 };

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "./navBar.module.css";
 import Image from "next/image";
+import LogButton from "../LogButton/LogButton";
 
 export default function NavBar() {
 	return (
@@ -28,7 +29,11 @@ export default function NavBar() {
 						</Link>
 					</li>
 				</ul>
-				{/* <LogButton user={user} setUser={setUser} /> */}
+				<ul className={styles.list}>
+					<li>
+						<LogButton />
+					</li>
+				</ul>
 			</nav>
 		</>
 	);

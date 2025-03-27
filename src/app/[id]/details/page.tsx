@@ -11,7 +11,6 @@ export default async function DetailPage(props: {
 }) {
 	const params = await props.params;
 	const infoCamping = await fetchDetails(params.id);
-	console.info(infoCamping);
 
 	const formatedDate = (date: Date) => {
 		const newDate = new Date(date);

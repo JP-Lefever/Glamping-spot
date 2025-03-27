@@ -111,7 +111,7 @@ export async function addCamping(formData: FormData, dataPhoto: PhotoProps) {
 		dataPhoto;
 
 	const validateData = validationSchemaCamping.safeParse(infoCamping);
-	console.log(validateData.error);
+
 	if (validateData.success) {
 		const {
 			campingName,
@@ -185,7 +185,7 @@ export async function addCamping(formData: FormData, dataPhoto: PhotoProps) {
 		};
 
 		const campingId = await AdminCampingRepository.createCamping(campingInfo);
-		console.log(campingId);
+
 		const rentalId = await AdminCampingRepository.createRental(
 			rentalInfo,
 			campingId,

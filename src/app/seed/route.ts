@@ -141,10 +141,9 @@ CREATE TABLE IF NOT EXISTS pitches(
      `;
 }
 
-
 export async function GET() {
 	try {
-		const result = await sql.begin(async (sql) => [
+		await sql.begin(async (sql) => [
 			seedUser(),
 			seedCamping(),
 			seedBook(),
@@ -154,7 +153,6 @@ export async function GET() {
 			seedRental(),
 			seedTypePitches(),
 			seedPitches(),
-    
 		]);
 
 		return Response.json({ message: "Database seeded successfully" });

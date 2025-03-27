@@ -5,12 +5,12 @@ const sql = postgres(process.env.POSTGRES_URL as string, { ssl: "require" });
 
 class RegisterRepository {
 	async createUser(
-		data: Omit<UserProps, "id" | "confirmpassword">,
+		data: Omit<UserProps, "id" | "confirmpassword" | "role">,
 	): Promise<Record<string, string>> {
 		const {
 			email,
-			firstName,
-			lastName,
+			firstname,
+			lastname,
 			birthdate,
 			city,
 			zipCode,
@@ -21,7 +21,7 @@ class RegisterRepository {
 		try {
 			await sql`
     INSERT INTO "user" (email, firstname, lastname, birthdate, city, zipcode, tel, password)
-    VALUES (${email},${firstName},${lastName},${birthdate},${city},${zipCode},${tel},${password})
+    VALUES (${email},${firstname},${lastname},${birthdate},${city},${zipCode},${tel},${password})
     `;
 
 			return { message: "Le compte a bien été créé" };
