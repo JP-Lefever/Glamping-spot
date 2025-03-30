@@ -1,15 +1,19 @@
 "use client";
 
-import type { CampingProps } from "../../assets/lib/definitions";
+import type { CampingProps, ModelProps } from "../../assets/lib/definitions";
 import styles from "./addInfoMh.module.css";
 
-import type { UseFormRegister } from "react-hook-form";
+import type { UseFormRegister, FieldErrors } from "react-hook-form";
 
-export type RegisterProps = {
+export default function AddInfoCamping({
+	register,
+	model,
+	errors,
+}: {
 	register: UseFormRegister<CampingProps>;
-};
-
-export default function AddInfoCamping({ register }: RegisterProps) {
+	errors: FieldErrors<CampingProps>;
+	model: ModelProps[] | undefined;
+}) {
 	return (
 		<>
 			<fieldset className={styles.fieldset}>
@@ -17,72 +21,101 @@ export default function AddInfoCamping({ register }: RegisterProps) {
 				<label className={styles.label} htmlFor="modelMh">
 					Type d'hébergement
 				</label>
-				<select
-					className={styles.input}
-					{...register("modelMh", { required: "Champ requis" })}
-				>
-					<option value={0}>Séléctionnez une type d'hébergement</option>
-					{/* {mobilHome
-						? mobilHome.map((m) => (
-								<option key={m.id} value={m.id}>
-									{m.label}
-								</option>
-							))
-						: ""} */}
-				</select>
+				<div>
+					<select
+						className={styles.input}
+						{...register("modelMh", { required: "Champ requis" })}
+					>
+						<option value={0}>Séléctionnez une type d'hébergement</option>
+						{model
+							? model.map((m) => (
+									<option key={m.id} value={m.id}>
+										{m.label}
+									</option>
+								))
+							: ""}
+					</select>
+					<p className={styles.error}>{errors.modelMh?.message}</p>
+				</div>
 				<label className={styles.label} htmlFor="sizeMh">
 					Taille(en m2)
 				</label>
-				<input
-					className={styles.input}
-					type="number"
-					{...register("sizeMh", { required: "Champ requis" })}
-				/>
+				<div>
+					<input
+						className={styles.input}
+						type="number"
+						{...register("sizeMh", { required: "Champ requis" })}
+					/>
+					<p className={styles.error}>{errors.sizeMh?.message}</p>
+				</div>
 				<label className={styles.label} htmlFor="pricePerNight">
 					Prix/nuit
 				</label>
-				<input
-					className={styles.input}
-					type="number"
-					step="0.01"
-					{...register("pricePerNight", { required: "Champ requis" })}
-				/>
+				<div>
+					<input
+						className={styles.input}
+						type="number"
+						step="0.01"
+						{...register("pricePerNight", { required: "Champ requis" })}
+					/>
+					<p className={styles.error}>{errors.pricePerNight?.message}</p>
+				</div>
 				<label className={styles.label} htmlFor="maxPers">
 					Max personnes
 				</label>
-				<input
-					className={styles.input}
-					type="number"
-					{...register("maxPers", { required: "Champ requis" })}
-				/>
+				<div>
+					<input
+						className={styles.input}
+						type="number"
+						{...register("maxPers", { required: "Champ requis" })}
+					/>
+					<p className={styles.error}>{errors.pricePerNight?.message}</p>
+				</div>
 				<label className={styles.label} htmlFor="openingMh">
 					Date d'ouverture
 				</label>
-				<input
-					className={styles.input}
-					type="date"
-					{...register("openingMh", { required: "Champ requis" })}
-				/>
+				<div>
+					<input
+						className={styles.input}
+						type="date"
+						{...register("openingMh", { required: "Champ requis" })}
+					/>
+					<p className={styles.error}>{errors.openingMh?.message}</p>
+				</div>
 				<label className={styles.label} htmlFor="closingMh">
 					Date de fermeture
 				</label>
-				<input
-					className={styles.input}
-					type="date"
-					{...register("closingMh", { required: "Champ requis" })}
-				/>
+				<div>
+					<input
+						className={styles.input}
+						type="date"
+						{...register("closingMh", { required: "Champ requis" })}
+					/>
+					<p className={styles.error}>{errors.closingMh?.message}</p>
+				</div>
 				<label className={styles.label} htmlFor="linear">
 					Nombre de linéaire
 				</label>
-				<input
-					className={styles.input}
-					type="number"
-					{...register("linear", { required: "Champ requis" })}
-				/>
+				<div>
+					<input
+						className={styles.input}
+						type="number"
+						{...register("linear", { required: "Champ requis" })}
+					/>
+					<p className={styles.error}>{errors.linear?.message}</p>
+				</div>
+
 				<label className={styles.label} htmlFor="photoMh">
 					Photo
 				</label>
-				<input className={styles.input} type="file" {...register("photoMh")} />
+				<div>
+					<input
+						className={styles.input}
+						type="file"
+						{...register("photoMh", { required: "Champ requis" })}
+					/>
+					<p className={styles.error}>{errors.linear?.message}</p>
+				</div>
 			</fieldset>
 		</>
 	);

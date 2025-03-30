@@ -1,8 +1,10 @@
 "use client";
 import { useState } from "react";
-
+import { Power } from "lucide-react";
 import styles from "./navAdmin.module.css";
 import Link from "next/link";
+import { logout } from "../../modules/auth/authAction";
+import { toast } from "react-toastify";
 
 export default function NavAdmin() {
 	const [openMenu, setOpenMenu] = useState(false);
@@ -10,13 +12,22 @@ export default function NavAdmin() {
 
 	const [openMenuUser, setOpenMenuUser] = useState(false);
 	const handleClickMenuUser = () => setOpenMenuUser(!openMenuUser);
+	const handleLogout = async () => {
+		const response = await logout();
 
+		if (response?.status === "logOut") {
+			toast.success(response.message);
+			setTimeout(() => {
+				location.reload();
+			}, 1500);
+		}
+	};
 	return (
 		<>
 			<nav className={styles.nav}>
-				{/* <button className={styles.logout} onClick={logout} type="button">
+				<button className={styles.logout} onClick={handleLogout} type="button">
 					<Power size={32} />
-				</button> */}
+				</button>
 				<section>
 					<button
 						className={styles.button}

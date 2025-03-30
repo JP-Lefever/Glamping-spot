@@ -1,13 +1,18 @@
 "use client";
 
-import type { UseFormRegister } from "react-hook-form";
+import type { UseFormRegister, FieldErrors } from "react-hook-form";
 import type { CampingProps, InfraProps } from "../../assets/lib/definitions";
 import styles from "./addInfoInfra.module.css";
 
-export type RegisterProps = {
+export default function AddInfoInfra({
+	register,
+	infra,
+	errors,
+}: {
 	register: UseFormRegister<CampingProps>;
-};
-export default function AddInfoIngra({ register }: RegisterProps) {
+	infra: InfraProps[] | undefined;
+	errors: FieldErrors<CampingProps>;
+}) {
 	return (
 		<>
 			<fieldset className={styles.fieldset}>
@@ -15,27 +20,33 @@ export default function AddInfoIngra({ register }: RegisterProps) {
 				<label className={styles.label} htmlFor="infra">
 					Infrastructure
 				</label>
-				<select
-					className={styles.input}
-					{...register("infra", { required: "Champ requis" })}
-				>
-					<option value={0}>Séléctionnez une infrastructure</option>
-					{/* {infra
-						? infra.map((i) => (
-								<option key={i.id} value={i.id}>
-									{i.label}
-								</option>
-							))
-						: ""} */}
-				</select>
+				<div>
+					<select
+						className={styles.input}
+						{...register("infra", { required: "Champ requis" })}
+					>
+						<option value={0}>Séléctionnez une infrastructure</option>
+						{infra
+							? infra.map((i) => (
+									<option key={i.id} value={i.id}>
+										{i.label}
+									</option>
+								))
+							: ""}
+					</select>
+					<p className={styles.error}>{errors.photoInfra?.message}</p>
+				</div>
 				<label className={styles.label} htmlFor="photoInfra">
 					Photo
 				</label>
-				<input
-					className={styles.input}
-					type="file"
-					{...register("photoInfra")}
-				/>
+				<div>
+					<input
+						className={styles.input}
+						type="file"
+						{...register("photoInfra", { required: "champs requis" })}
+					/>
+					<p className={styles.error}>{errors.photoInfra?.message}</p>
+				</div>
 			</fieldset>
 		</>
 	);

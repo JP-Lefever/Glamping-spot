@@ -1,0 +1,93 @@
+.section {
+	min-height: 100vh;
+	background-color: var(--primary-color);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1em;
+	font-family: var(--text-font);
+	position: relative;
+}
+.logo {
+	width: 4vw;
+	height: auto;
+	border-radius: 10px;
+	position: absolute;
+	top: 0;
+	border: 2px solid var(--warm-color);
+}
+.linkLogo {
+	width: 4vw;
+	height: auto;
+	border-radius: 10px;
+	position: absolute;
+	top: 0;
+}
+
+.h2 {
+	font-size: 1.5em;
+	font-weight: 700;
+	color: var(--primary-color);
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+	text-align: center;
+}
+.div {
+	max-width: 28em;
+	width: 100%;
+	background-color: var(--cold-color);
+	border-radius: 0.75em;
+	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+	padding: 2rem;
+}
+
+.form > * + * {
+	margin-top: 1rem;
+}
+
+.label {
+	display: block;
+	font-size: 1em;
+	line-height: 1.25em;
+	font-weight: 500;
+	color: #374151;
+	margin-bottom: 0.25em;
+}
+
+.input {
+	width: 100%;
+	padding: 0.5em 1em;
+	border: 1px solid var(--light-color);
+	border-radius: 0.5em;
+	outline: none;
+	transition: all 0.2s ease-in-out;
+	font-family: var(--text-font);
+}
+
+.input:focus {
+	border-color: var(--primary-color);
+	box-shadow: 0 0 0 2px var(--primary-color);
+	opacity: 90%;
+}
+
+.role {
+	color: #ef4444;
+	font-size: 0.875em;
+	margin-top: 0.5em;
+}
+
+.button {
+	width: 100%;
+	background-color: var(--primary-color);
+	font-size: 1em;
+	color: #ffffff;
+	font-weight: 500;
+	padding: 0.625em;
+	border-radius: 0.5em;
+	transition: background-color 0.3s ease;
+}
+
+.button:hover {
+	background-color: var(--primary-color);
+	opacity: 90%;
+}
