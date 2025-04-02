@@ -194,6 +194,8 @@ export async function addCamping(formData: FormData, dataPhoto: PhotoProps) {
 			pitchInfo,
 			campingId,
 		);
+
+		console.log(infra);
 		const infraId = await AdminCampingRepository.createInfrastructure(
 			infra,
 			campingId,

@@ -137,7 +137,7 @@ class AdminCampingRepository {
 	) {
 		try {
 			const result = await sql`
-			INSERT INTO infrastructure(label, camping_id,photo)
+			INSERT INTO infrastructure(kind_infra_id, camping_id, photo)
 			VALUES (${infra}, ${camping_id}, ${photoInfraName})
 			RETURNING id
 			`;

@@ -16,7 +16,7 @@ export default function Footer() {
 					<Image
 						className={style.logoClass}
 						src="/images/logo-camp.jpg"
-						alt="Logo Boarder Line"
+						alt="Logo Glamping Spot"
 						width={280}
 						height={160}
 					/>
@@ -26,21 +26,21 @@ export default function Footer() {
 					<div className={style.social}>
 						<Image
 							className={style.miniLogoAnimation}
-							src="/images/logo-linkedin.png"
+							src="/images/linkedin.png"
 							alt="Logo LinkedIn"
 							width={45}
 							height={45}
 						/>
 						<Image
 							className={style.miniLogoAnimation}
-							src="/images/logo-instagram.png"
+							src="/images/instagram.png"
 							alt="Logo Instagram"
 							width={45}
 							height={45}
 						/>
 						<Image
 							className={style.miniLogoAnimation}
-							src="/images/logo-youtube.png"
+							src="/images/youtube.png"
 							alt="Logo YouTube"
 							width={45}
 							height={45}

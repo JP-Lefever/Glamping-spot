@@ -12,10 +12,13 @@
 	width: 4vw;
 	height: auto;
 	border-radius: 10px;
-	position: relative;
-	top: 10;
-	left: 110;
 	border: 2px solid var(--warm-color);
+}
+
+.linkLogo {
+	display: block;
+	width: fit-content;
+	margin: auto;
 }
 
 .h2 {
