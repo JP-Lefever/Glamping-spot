@@ -5,6 +5,7 @@ import CardCamping from "../cardCamping/CardCamping";
 export default async function Main() {
 	const camping5 = await fetchCamping5();
 	const camping4 = await fetchCamping4();
+	console.log(camping4);
 	return (
 		<>
 			<main>
