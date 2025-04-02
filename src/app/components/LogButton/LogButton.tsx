@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { logout } from "../../modules/auth/authAction";
 import { toast } from "react-toastify";
+import { redirect } from "next/navigation";
 
 export default function LogButton() {
 	const { data: session } = useSession();
@@ -17,11 +18,11 @@ export default function LogButton() {
 	const handleLogout = async () => {
 		const response = await logout();
 
-		console.log(response?.status);
 		if (response?.status === "logOut") {
 			toast.success(response.message);
 			location.reload();
 		}
+		redirect("/");
 	};
 
 	return (
