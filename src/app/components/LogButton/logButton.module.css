@@ -4,6 +4,10 @@
 	padding: 0.5em;
 	border: var(--primary-color) solid 4px;
 	position: relative;
+	@media screen and (max-width: 568px) {
+		width: 10vw;
+		border: none;
+	}
 }
 .button_logout {
 	background-color: var(--light-color);
@@ -21,6 +25,9 @@
 	flex-direction: column;
 	border-radius: 10px;
 	z-index: 200;
+	@media screen and (max-width: 568px) {
+		right: 1.6em;
+	}
 }
 .link {
 	background-color: var(--cold-color);
