@@ -6,6 +6,9 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	@media screen and (max-width: 568px) {
+		width: 25vw;
+	}
 }
 
 .ul {
@@ -20,6 +23,11 @@
 	border-radius: 10px;
 	margin-top: 0.2em;
 	padding: 0.4em;
+	@media screen and (max-width: 568px) {
+		font-size: 0.5em;
+		width: 23vw;
+		align-items: flex-start;
+	}
 }
 
 .button {
@@ -31,6 +39,10 @@
 	padding: 0.5em;
 	margin-top: 1em;
 	border-radius: 10px;
+	@media screen and (max-width: 568px) {
+		font-size: 0.5em;
+		width: 23vw;
+	}
 }
 
 .li {
@@ -39,6 +51,9 @@
 	text-align: center;
 	padding-top: 0.4em;
 	padding-bottom: 0.4em;
+	@media screen and (max-width: 568px) {
+		width: 20vw;
+	}
 }
 .li:last-child {
 	border-bottom: none;
@@ -61,6 +76,9 @@
 	padding-top: 0.4em;
 	padding-bottom: 0.4em;
 	text-decoration: none;
+	@media screen and (max-width: 568px) {
+		width: 20vw;
+	}
 }
 .addCamp:last-child {
 	border-bottom: none;
