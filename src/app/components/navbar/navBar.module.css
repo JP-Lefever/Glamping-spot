@@ -2,6 +2,9 @@
 	width: 5vw;
 	height: auto;
 	border-radius: 10px;
+	@media screen and (max-width: 568px) {
+		width: 10vw;
+	}
 }
 
 .nav {
@@ -12,6 +15,11 @@
 	padding: 2em;
 	background-color: var(--light-color);
 	align-items: center;
+
+	@media screen and (max-width: 568px) {
+		font-size: 0.7em;
+		justify-content: space-between;
+	}
 }
 
 .list {

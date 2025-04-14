@@ -9,7 +9,7 @@
 	text-align: left;
 	background: white;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	max-width: 100vw;
+	max-width: 100%;
 	max-height: auto;
 	box-sizing: border-box;
 	font-family: var(--otherTitle-font);
@@ -44,6 +44,9 @@
 	box-sizing: border-box;
 	font-family: var(--text-font);
 	line-height: 2em;
+	@media screen and (max-width: 568px) {
+		max-width: 100vw;
+	}
 }
 .article_desc {
 	border: 1px solid #ccc;
@@ -56,6 +59,9 @@
 	max-height: auto;
 	box-sizing: border-box;
 	font-family: var(--text-font);
+	@media screen and (max-width: 568px) {
+		width: 100vw;
+	}
 }
 .info_generales {
 	display: flex;
@@ -64,6 +70,9 @@
 	margin: auto;
 	gap: 2em;
 	margin-top: 2em;
+	@media screen and (max-width: 568px) {
+		flex-direction: column;
+	}
 }
 
 .article {
@@ -80,11 +89,18 @@
 	margin: auto;
 	margin-top: 4em;
 	padding-bottom: 3em;
+	@media screen and (max-width: 568px) {
+		max-width: 100vw;
+	}
 }
 .cottage {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	@media screen and (max-width: 568px) {
+		flex-direction: column;
+		text-align: center;
+	}
 }
 .h2 {
 	text-align: center;
@@ -101,11 +117,19 @@
 	height: 33vh;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	border-radius: 10px;
+	@media screen and (max-width: 568px) {
+		width: 90vw;
+		margin-bottom: 1vh;
+	}
 }
 .pitches {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	@media screen and (max-width: 568px) {
+		flex-direction: column;
+		text-align: center;
+	}
 }
 
 .info_pitches {
@@ -117,17 +141,28 @@
 	height: 33vh;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	border-radius: 10px;
+	@media screen and (max-width: 568px) {
+		width: 90vw;
+		margin-bottom: 1vh;
+	}
 }
 
 .infra {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	@media screen and (max-width: 568px) {
+		flex-direction: column;
+		text-align: center;
+	}
 }
 
 .info_infra {
 	line-height: 2em;
 	width: 20vw;
+	@media screen and (max-width: 568px) {
+		width: 100vw;
+	}
 }
 
 .imgInfra {
@@ -135,6 +170,10 @@
 	height: 33vh;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	border-radius: 10px;
+	@media screen and (max-width: 568px) {
+		width: 90vw;
+		margin-bottom: 1vh;
+	}
 }
 
 .button {
@@ -156,6 +195,9 @@
 	color: var(--primary-color);
 	text-align: center;
 	margin-top: 0.8em;
+	@media screen and (max-width: 568px) {
+		font-size: 1.5em;
+	}
 }
 .main_h3 {
 	font-family: var(--otherTitle-font);
@@ -163,6 +205,9 @@
 	color: var(--secondary-color);
 	text-align: center;
 	font-weight: lighter;
+	@media screen and (max-width: 568px) {
+		font-size: 3em;
+	}
 }
 
 .div_info {
@@ -178,4 +223,7 @@
 	color: var(--primary-color);
 	font-family: var(--text-font);
 	font-size: 1.7em;
+	@media screen and (max-width: 568px) {
+		text-align: center;
+	}
 }
