@@ -19,12 +19,12 @@ export default function NavBar() {
 
 				<ul className={styles.list}>
 					<li>
-						<Link className={styles.link} href="#">
+						<Link className={styles.link} href="#camping5">
 							Glamping 5*
 						</Link>
 					</li>
 					<li>
-						<Link className={styles.link} href="#">
+						<Link className={styles.link} href="#camping4">
 							Glamping 4*
 						</Link>
 					</li>

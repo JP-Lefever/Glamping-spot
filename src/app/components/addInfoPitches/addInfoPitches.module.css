@@ -12,6 +12,12 @@
 	margin-bottom: 2em;
 	padding: 1em;
 	border-radius: 10px;
+	@media screen and (max-width: 568px) {
+		display: flex;
+		flex-direction: column;
+		width: 72vw;
+		gap: 1.2vh;
+	}
 }
 
 .legend {
@@ -22,15 +28,27 @@
 	padding: 1em;
 	border-radius: 10px;
 	font-size: 1.2em;
+	@media screen and (max-width: 568px) {
+		width: 50vw;
+		margin: auto;
+	}
 }
 
 .label {
 	width: 10vw;
 	margin-left: 1em;
+	@media screen and (max-width: 568px) {
+		width: 63vw;
+		margin-left: 0;
+	}
 }
 
 .input {
 	width: 15vw;
+	@media screen and (max-width: 568px) {
+		width: 62vw;
+		margin-top: 0;
+	}
 }
 
 .add_form {

@@ -10,6 +10,11 @@
 	margin-bottom: 2em;
 	padding: 1em;
 	border-radius: 10px;
+	@media screen and (max-width: 568px) {
+		display: flex;
+		flex-direction: column;
+		width: 70vw;
+	}
 }
 
 .legend {
@@ -20,11 +25,20 @@
 	padding: 1em;
 	border-radius: 10px;
 	font-size: 1.2em;
+	@media screen and (max-width: 568px) {
+		font-size: 0.8em;
+		margin-left: auto;
+		text-align: center;
+	}
 }
 
 .label {
 	width: 10vw;
 	margin-left: 1em;
+	@media screen and (max-width: 568px) {
+		width: 50vw;
+		text-align: center;
+	}
 }
 
 .input {

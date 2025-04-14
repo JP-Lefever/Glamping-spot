@@ -22,6 +22,11 @@
 	left: 16vw;
 	top: 10vh;
 	border: 2px solid var(--warm-color);
+	@media screen and (max-width: 568px) {
+		width: 14vw;
+		top: 12vh;
+		left: 8vw;
+	}
 }
 
 .closeModal {
