@@ -3,6 +3,9 @@
 	background-size: 100vw;
 	height: 85vh;
 	background-repeat: no-repeat;
+	@media screen and (max-width: 568px) {
+		height: 25vh;
+	}
 }
 
 .title {

@@ -21,7 +21,7 @@ export default async function Main() {
 					</article>
 				</section>
 				<section className={styles.camp}>
-					<h2 className={styles.h2}>Découvrez nos Glamping 5*</h2>
+					<h2 className={styles.h2}>Découvrez nos Glamping 4*</h2>
 					<h3 className={styles.h3}>De la nature & bien plus encore</h3>
 					<article className={styles.article}>
 						{camping4
